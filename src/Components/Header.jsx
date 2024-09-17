@@ -1,4 +1,4 @@
-const Header = ({ setSearch, setOrdering, count }) => {
+const Header = ({ setSearch, setOrdering, count, setPage, lastPage }) => {
   return (
     <header>
       <section className="title-sec">
@@ -28,6 +28,19 @@ const Header = ({ setSearch, setOrdering, count }) => {
               <option value="rating">best rated</option>
               <option value="released">last released</option>
             </select>
+          </div>
+          <div className="search-page">
+            <label>Page</label>
+            <input
+              type="number"
+              id="page-number"
+              placeholder="1"
+              min="1"
+              max={lastPage}
+              onChange={(event) => {
+                setPage(event.target.value);
+              }}
+            />
           </div>
         </div>
       </section>
