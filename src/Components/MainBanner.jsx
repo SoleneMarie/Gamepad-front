@@ -7,7 +7,24 @@ const MainBanner = ({
   lastPage,
   isLoading,
 }) => {
-  console.log(lastPage);
+  console.log("last page : ", lastPage);
+
+  {
+    /* ------------------ code pour le timeout  ------------------ */
+  }
+  let timeout;
+  const setDelaySearch = (value, delay) => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      setSearch(value);
+    }, delay);
+  };
+  {
+    /* ---------------------------------------------------------- */
+  }
+
   return (
     <header>
       <section className="title-sec">
@@ -21,7 +38,7 @@ const MainBanner = ({
               placeholder={`search ${count} games`}
               onChange={(event) => {
                 event.preventDefault();
-                setSearch(event.target.value);
+                setDelaySearch(event.target.value, 1000);
               }}
             />
             <div className="sort">
@@ -56,7 +73,18 @@ const MainBanner = ({
         ) : isLoading ? (
           <p>Loading, please wait...</p>
         ) : (
-          <></>
+          <div className="search-order">
+            <input
+              type="text"
+              id="search-game"
+              name="search-game"
+              placeholder={`no game found, try another research!`}
+              onChange={(event) => {
+                event.preventDefault();
+                setSearch(event.target.value);
+              }}
+            />
+          </div>
         )}
       </section>
     </header>

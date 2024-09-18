@@ -12,7 +12,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/game/:id" element={<OneGame />} />
           <Route path="/genres" element={<Genres />} />
-          <Route path="/games/:genre" element={<GamesGenre />} />
+          <Route path="/games/:id" element={<GamesGenre />} />
+          <Route path="/genres/:id" element={<GamesGenre />} />
         </Routes>
       </Router>
     </>

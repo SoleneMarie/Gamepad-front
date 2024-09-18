@@ -11,17 +11,36 @@ import placeHolder from "../pictures/placeholder.png";
 import PageNav from "../Components/PageNav";
 
 const GameGenre = () => {
+  const [isLoadingGenre, setIsLoadingGenre] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [dataGenre, setDataGenre] = useState({});
   const [data, setData] = useState({});
   const [count, setCount] = useState(1);
   const [search, setSearch] = useState("");
   const [ordering, setOrdering] = useState("");
-  const [pageSize, setPageSize] = useState(50);
+  const [pageSize, setPageSize] = useState(40);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(2);
 
   const param = useParams();
-  const genreId = param.genre;
+  const genreId = param.id;
+  console.log(param);
+
+  useEffect(() => {
+    setIsLoadingGenre(true);
+    const infosGenreFunc = async () => {
+      try {
+        const genreResponse = await axios.get(
+          `http://localhost:3000/genres/${genreId}`
+        );
+        setDataGenre(genreResponse.data);
+        setIsLoadingGenre(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    infosGenreFunc();
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,9 +52,17 @@ const GameGenre = () => {
         setData(response.data.results);
         setCount(response.data.count);
         if (Number(count % pageSize) === 0) {
-          setLastPage(count / pageSize);
+          if (count / pageSize <= 250) {
+            setLastPage(count / pageSize);
+          } else {
+            setLastPage(250);
+          }
         } else {
-          setLastPage(Math.trunc(Number(count / pageSize + 1)));
+          if (Math.trunc(Number(count / pageSize + 1)) <= 250) {
+            setLastPage(Math.trunc(Number(count / pageSize + 1)));
+          } else {
+            setLastPage(250);
+          }
         }
         setIsLoading(false);
       } catch (error) {
@@ -45,7 +72,7 @@ const GameGenre = () => {
     gamesGenreFunc();
   }, [ordering, search, page, count]);
 
-  if (isLoading) {
+  if (isLoading || isLoadingGenre) {
     return (
       <>
         <Header />
@@ -69,12 +96,16 @@ const GameGenre = () => {
     );
   } else {
     console.log("data reçu : ", data);
+    console.log("data du genre : ", dataGenre);
     return (
       <>
         <Header />
         <main>
           <LeftMenu />
           <section className="content">
+            <section className="genre-description">
+              <h1>{dataGenre.name}</h1>
+            </section>
             <MainBanner
               setSearch={setSearch}
               setOrdering={setOrdering}

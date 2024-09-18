@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import placeHolder from "../pictures/placeholder.png";
 import { GoStarFill } from "react-icons/go";
+import { Link } from "react-router-dom";
 import CleanText from "../Components/CleanText";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
-import MainBanner from "../Components/MainBanner";
+import Header from "../Components/Header";
 
 const OneGame = () => {
   const param = useParams();
@@ -31,23 +32,25 @@ const OneGame = () => {
 
   if (isLoading) {
     return (
-      <main>
-        <MainBanner />
-        <section className="content">
-          <LeftMenu />
-          <p>Loading...</p>
-          <Footer />
-        </section>
-      </main>
+      <>
+        <Header />
+        <main>
+          <section className="content">
+            <LeftMenu />
+            <p>Loading...</p>
+            <Footer />
+          </section>
+        </main>
+      </>
     );
   } else {
     console.log(data);
     return (
       <>
+        <Header />
         <main>
           <LeftMenu />
           <section className="content">
-            <MainBanner />
             <section className="all-details-one-game">
               <h1>{data.name}</h1>
               <div className="one-game-big-pic">
@@ -61,9 +64,9 @@ const OneGame = () => {
                 {data.genres &&
                   data.genres.map((item) => {
                     return (
-                      <div className="one-game-genres" key={item.id}>
-                        {item.name}
-                      </div>
+                      <Link to={`/genres/${item.id}`} key={item.id}>
+                        <div className="one-game-genres">{item.name}</div>
+                      </Link>
                     );
                   })}
                 <CleanText data={data} />

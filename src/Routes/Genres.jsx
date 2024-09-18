@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import MainBanner from "../Components/MainBanner";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
@@ -15,11 +14,10 @@ const Genres = () => {
       setIsLoading(true);
       try {
         const response = await axios.get("http://localhost:3000/genres");
-        console.log(response);
         setData(response.data.results);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.log("erreur: ", error);
       }
     };
     getGenresFunc();
@@ -32,7 +30,6 @@ const Genres = () => {
         <main>
           <LeftMenu />
           <section className="content">
-            <MainBanner />
             <section className="all-genres-infos"></section>
             <p>Loading content</p>
           </section>
@@ -41,14 +38,12 @@ const Genres = () => {
       </>
     );
   } else {
-    console.log(data);
     return (
       <>
         <Header />
         <main>
           <LeftMenu />
           <section className="content">
-            <MainBanner />
             <section className="all-genres-infos">
               {data &&
                 data.map((item) => {
