@@ -1,44 +1,48 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer";
-import LeftMenu from "../Components/LeftMenu";
 import { FaPlus } from "react-icons/fa";
-import placeHolder from "../pictures/placeholder.png";
 import Header from "../Components/Header";
 import MainBanner from "../Components/MainBanner";
+import Footer from "../Components/Footer";
+import LeftMenu from "../Components/LeftMenu";
+import placeHolder from "../pictures/placeholder.png";
 import PageNav from "../Components/PageNav";
 
-const Home = () => {
-  const [search, setSearch] = useState("");
-  const [ordering, setOrdering] = useState("");
+const GameGenre = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
   const [count, setCount] = useState(1);
+  const [search, setSearch] = useState("");
+  const [ordering, setOrdering] = useState("");
   const [pageSize, setPageSize] = useState(50);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(2);
 
+  const param = useParams();
+  const genreId = param.genre;
+
   useEffect(() => {
     setIsLoading(true);
-    const dataGamesFunc = async () => {
+    const gamesGenreFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000?search=${search}&ordering=${ordering}&page=${page}&pagesize=${pageSize}`
+          `http://localhost:3000/games/${genreId}?pagesize=${pageSize}&search=${search}&ordering=${ordering}&page=${page}`
         );
         setData(response.data.results);
         setCount(response.data.count);
-        if (count % pageSize === 0) {
+        if (Number(count % pageSize) === 0) {
           setLastPage(count / pageSize);
         } else {
-          setLastPage(Math.trunc(count / pageSize + 1));
+          setLastPage(Math.trunc(Number(count / pageSize + 1)));
         }
         setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-    dataGamesFunc();
+    gamesGenreFunc();
   }, [ordering, search, page, count]);
 
   if (isLoading) {
@@ -57,22 +61,19 @@ const Home = () => {
               lastPage={lastPage}
               isLoading={isLoading}
             />
-
-            <p>Loading content</p>
-            <Footer />
+            <section className="all-genres-infos"></section>
           </section>
         </main>
+        <Footer />
       </>
     );
   } else {
+    console.log("data reçu : ", data);
     return (
       <>
         <Header />
         <main>
           <LeftMenu />
-          {/* -----------------------------------------------------------------------------------------------
-          -------------------------------------------CONTENU PRINCIPAL --------------------------------------
-          ------------------------------------------------------------------------------------------------- */}
           <section className="content">
             <MainBanner
               setSearch={setSearch}
@@ -82,8 +83,7 @@ const Home = () => {
               setPage={setPage}
               lastPage={lastPage}
             />
-            {/* -------------------------------- RECUPERATION DU CONTENU -------------------------------- */}
-            <section className="all-games">
+            <section className="all-genres-infos">
               {data.length > 0 &&
                 data.map((item) => {
                   if (
@@ -147,5 +147,4 @@ const Home = () => {
     );
   }
 };
-
-export default Home;
+export default GameGenre;

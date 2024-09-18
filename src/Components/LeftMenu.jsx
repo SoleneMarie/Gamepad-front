@@ -1,8 +1,14 @@
+import { Link } from "react-router-dom";
+import { Router } from "react-router-dom";
 const LeftMenu = () => {
   return (
     <nav className="menu">
-      <button>HOME</button>
-      <button>GENRES</button>
+      <Link to="/">
+        <button>HOME</button>
+      </Link>
+      <Link to="/genres">
+        <button>GENRES</button>
+      </Link>
       <button>PLATFORMS</button>
       <button>REVIEWS</button>
       <button>STORE</button>

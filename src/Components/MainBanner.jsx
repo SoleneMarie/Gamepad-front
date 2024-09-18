@@ -7,6 +7,7 @@ const MainBanner = ({
   lastPage,
   isLoading,
 }) => {
+  console.log(lastPage);
   return (
     <header>
       <section className="title-sec">
