@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../Components/Header";
+import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
+import LeftMenu from "../Components/LeftMenu";
 import { FaPlus } from "react-icons/fa";
 import placeHolder from "../pictures/placeholder.png";
 import arrowLeft from "../pictures/arrow-game-left.png";
 import arrowRight from "../pictures/arrow-game-right.png";
+import Header from "../Components/Header";
+import MainBanner from "../Components/MainBanner";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -42,41 +45,44 @@ const Home = () => {
   if (isLoading) {
     return (
       <>
-        <Header
-          setSearch={setSearch}
-          setOrdering={setOrdering}
-          count={count}
-          setPage={setPage}
-          lastPage={lastPage}
-        />
-        <p>Loading, please wait...</p>
-        <Footer />
+        <Header />
+        <main>
+          <LeftMenu />
+          <section className="content">
+            <MainBanner
+              setSearch={setSearch}
+              setOrdering={setOrdering}
+              count={count}
+              page={page}
+              setPage={setPage}
+              lastPage={lastPage}
+              isLoading={isLoading}
+            />
+
+            <p>Loading content</p>
+            <Footer />
+          </section>
+        </main>
       </>
     );
   } else {
     return (
       <>
-        <Header
-          setSearch={setSearch}
-          setOrdering={setOrdering}
-          count={count}
-          setPage={setPage}
-          lastPage={lastPage}
-        />
+        <Header />
         <main>
-          <nav className="menu">
-            <button>HOME</button>
-            <button>GENRES</button>
-            <button>PLATFORMS</button>
-            <button>REVIEWS</button>
-            <button>STORE</button>
-          </nav>
-
+          <LeftMenu />
           {/* -----------------------------------------------------------------------------------------------
           -------------------------------------------CONTENU PRINCIPAL --------------------------------------
           ------------------------------------------------------------------------------------------------- */}
           <section className="content">
-            {/* ------------------------------- TITRE, BARRE DE RECHERCHE -------------------------------- */}
+            <MainBanner
+              setSearch={setSearch}
+              setOrdering={setOrdering}
+              count={count}
+              page={page}
+              setPage={setPage}
+              lastPage={lastPage}
+            />
             {/* -------------------------------- RECUPERATION DU CONTENU -------------------------------- */}
             <section className="all-games">
               {data.length > 0 &&
@@ -93,11 +99,15 @@ const Home = () => {
                       <section className="one-game" key={item.id}>
                         {item.background_image ? (
                           <div className="one-game-pic">
-                            <img src={item.background_image} />
+                            <Link to={`/game/${item.id}`}>
+                              <img src={item.background_image} />
+                            </Link>
                           </div>
                         ) : (
                           <div className="one-game-pic">
-                            <img src={placeHolder} />
+                            <Link to={`/game/${item.id}`}>
+                              <img src={placeHolder} />
+                            </Link>
                           </div>
                         )}
                         <section className="one-game-infos">
@@ -130,7 +140,6 @@ const Home = () => {
                 })}
             </section>
             {/* ---------------------------- Ma navigation ---------------------------- */}
-
             {page === 1 ? (
               <section className="nav-pages">
                 <section className="left-button-class"></section>

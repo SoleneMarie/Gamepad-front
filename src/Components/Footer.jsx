@@ -1,7 +1,12 @@
+import FooterPic from "../pictures/footerpic.jpg";
+
 const Footer = () => {
   return (
     <footer>
-      <p>C'est le Footer!</p>
+      <p>Made with RAWG API, by Solene</p>
+      <div>
+        <img src={FooterPic} />
+      </div>
     </footer>
   );
 };
