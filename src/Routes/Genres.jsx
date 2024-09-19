@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
-
+import GetPicsById from "../Components/GetPicsById";
 const Genres = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -59,11 +59,12 @@ const Genres = () => {
                         <p>See {item.games_count} games</p>
                         <h3>Best rated games for this genre </h3>
                         {item.games &&
-                          item.games.map((itembis) => {
+                          item.games.map((itemBis) => {
                             return (
-                              <Link to={`/game/${itembis.id}`} key={itembis.id}>
-                                <p>{itembis.name} </p>
-                              </Link>
+                              <GetPicsById
+                                name={itemBis.name}
+                                id={itemBis.id}
+                              />
                             );
                           })}
                       </section>

@@ -13,7 +13,9 @@ const OneGame = () => {
   const param = useParams();
   const id = param.id;
   const [data, setData] = useState({});
+  const [dataScreens, setDataScreens] = useState([]);
   const [isLoading, setisLoading] = useState(false);
+  const [isLoadingScreens, setIsLoadingScreens] = useState(false);
 
   useEffect(() => {
     const getGame = async () => {
@@ -30,7 +32,23 @@ const OneGame = () => {
     getGame();
   }, []);
 
-  if (isLoading) {
+  useEffect(() => {
+    setIsLoadingScreens(true);
+    const fetchScreensFunc = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/game/${id}/screenshots`
+        );
+        setDataScreens(response.data.results);
+        setIsLoadingScreens(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchScreensFunc();
+  }, []);
+
+  if (isLoading || isLoadingScreens) {
     return (
       <>
         <Header />
@@ -45,6 +63,7 @@ const OneGame = () => {
     );
   } else {
     console.log(data);
+    console.log(dataScreens);
     return (
       <>
         <Header />
@@ -90,8 +109,21 @@ const OneGame = () => {
                   <p>{data.rating}</p>
                 </section>
 
-                {data.website && <p className="website">{data.website}</p>}
+                {data.website && (
+                  <Link to={data.website} target="_blank">
+                    <p className="website">{data.website}</p>
+                  </Link>
+                )}
               </section>
+            </section>
+            <section className="carousel">
+              {dataScreens.map((item) => {
+                return (
+                  <div className="one-screenshot" key={item.id}>
+                    <img src={item.image} />
+                  </div>
+                );
+              })}
             </section>
           </section>
         </main>

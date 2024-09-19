@@ -7,10 +7,7 @@ const Header = () => {
       <div>
         <img src={MainLogo} />
       </div>
-      <div className="login-space">
-        <button>LOG IN</button>
-        <button>SIGN UP</button>
-      </div>
+      <div className="login-space"></div>
     </header>
   );
 };

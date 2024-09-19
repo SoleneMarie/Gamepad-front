@@ -1,0 +1,96 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import LeftMenu from "../Components/LeftMenu";
+import PageNav from "../Components/PageNav";
+import GetPicsById from "../Components/GetPicsById";
+
+const Platforms = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [count, setCount] = useState(1);
+  const [pageSize, setPageSize] = useState(40);
+  const [page, setPage] = useState(1);
+  const [lastPage, setLastPage] = useState(2);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchPlatformsFunc = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/platforms?page_size=${pageSize}&page=${page}`
+        );
+        setData(response.data.results);
+        setCount(response.data.count);
+        if (count % pageSize === 0) {
+          setLastPage(count / pageSize);
+        } else {
+          setLastPage(Math.trunc(count / pageSize + 1));
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPlatformsFunc();
+  }, [page, count]);
+
+  if (isLoading) {
+    return (
+      <>
+        <Header />
+        <main>
+          <section className="content">
+            <LeftMenu />
+            <p>Loading...</p>
+            <Footer />
+          </section>
+        </main>
+      </>
+    );
+  } else {
+    console.log(data);
+    return (
+      <>
+        <>
+          <Header />
+          <main>
+            <section className="content">
+              <LeftMenu />
+              <section className="all-platforms">
+                {data.map((item) => {
+                  return (
+                    <section className="one-platform" key={item.id}>
+                      <div>
+                        <img src={item.image_background} />
+                      </div>
+                      <h2>{item.name}</h2>
+                      <p>
+                        There are <span>{item.games_count}</span> available
+                        games on {item.name}
+                      </p>
+                      <p>
+                        Best rated games on <span>{item.name}</span> :{" "}
+                      </p>
+                      {item.games &&
+                        item.games.map((itemBis) => {
+                          return (
+                            <GetPicsById name={itemBis.name} id={itemBis.id} />
+                          );
+                        })}
+                    </section>
+                  );
+                })}
+              </section>
+              <PageNav page={page} setPage={setPage} lastPage={lastPage} />
+              <Footer />
+            </section>
+          </main>
+        </>
+      </>
+    );
+  }
+};
+export default Platforms;
