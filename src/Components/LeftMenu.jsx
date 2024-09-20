@@ -5,7 +5,9 @@ const LeftMenu = () => {
     <>
       <nav className="menu">
         <button>Log in</button>
-        <button>Sign up</button>
+        <Link to="/user/signup">
+          <button>Sign up</button>
+        </Link>
       </nav>
       <nav className="menu">
         <Link to="/">
