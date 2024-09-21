@@ -20,7 +20,8 @@ const CleanText = ({ data }) => {
           .replaceAll("</ul>", " ")
           .replaceAll("<li>", "")
           .replaceAll("</li>", " ")
-          .replaceAll(":.", ": ")}
+          .replaceAll(":.", ": ")
+          .replaceAll("&#39;", "'")}
     </p>
   );
 };

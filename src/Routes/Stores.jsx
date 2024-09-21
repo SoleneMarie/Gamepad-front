@@ -53,8 +53,9 @@ const Stores = () => {
                     <div>
                       <img src={item.image_background} />
                     </div>
-                    <Link to={item.domain}></Link>
-                    <h2>{item.name}</h2>
+                    <Link to={item.domain}>
+                      <h2>{item.name}</h2>
+                    </Link>
                     <p>
                       There are <span>{item.games_count}</span> available games
                       on {item.name}

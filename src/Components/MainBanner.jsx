@@ -1,3 +1,4 @@
+import { useState } from "react";
 const MainBanner = ({
   setSearch,
   setOrdering,
@@ -8,6 +9,7 @@ const MainBanner = ({
   isLoading,
 }) => {
   console.log("last page : ", lastPage);
+  const [pageError, setPageError] = useState(false);
 
   {
     /* ------------------ code pour le timeout  ------------------ */
@@ -18,7 +20,23 @@ const MainBanner = ({
       clearTimeout(timeout);
     }
     timeout = setTimeout(() => {
+      setPage(1);
       setSearch(value);
+    }, delay);
+  };
+
+  let timeoutPage;
+  const setDelaySearchPage = (value, delay) => {
+    if (timeoutPage) {
+      clearTimeout(timeoutPage);
+    }
+    timeoutPage = setTimeout(() => {
+      setPageError(false);
+      if (value > 0 && value <= lastPage) {
+        setPage(value);
+      } else {
+        setPageError(true);
+      }
     }, delay);
   };
   {
@@ -59,16 +77,20 @@ const MainBanner = ({
             <div className="search-page">
               <label>Page</label>
               <input
-                type="number"
+                type="text"
                 id="page-number"
                 placeholder={page}
-                min="1"
-                max={lastPage}
                 onChange={(event) => {
                   event.preventDefault();
-                  setPage(event.target.value);
+                  if (
+                    Number(event.target.value) <= lastPage &&
+                    Number(event.target.value > 0)
+                  )
+                    setPage(Number(event.target.value));
+                  setDelaySearchPage(event.target.value, 1000);
                 }}
               />
+              {pageError && <p>Please enter a valid page (max : {lastPage})</p>}
             </div>
           </div>
         ) : isLoading ? (

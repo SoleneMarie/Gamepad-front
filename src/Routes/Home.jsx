@@ -8,6 +8,8 @@ import placeHolder from "../pictures/placeholder.png";
 import Header from "../Components/Header";
 import MainBanner from "../Components/MainBanner";
 import PageNav from "../Components/PageNav";
+import Aubergines from "../pictures/aubergines.jpg";
+import { BsFillExclamationOctagonFill } from "react-icons/bs";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -86,13 +88,23 @@ const Home = () => {
             <section className="all-games">
               {data.length > 0 &&
                 data.map((item) => {
+                  const arrTags = [];
+                  if (item.tags) {
+                    item.tags.map((tag) => {
+                      return arrTags.push(tag.name);
+                    });
+                  }
+                  console.log(arrTags);
                   if (
                     !item.name.includes("sex") &&
                     !item.name.includes("hentai") &&
                     !item.name.includes("Sex") &&
                     !item.name.includes("Hentai") &&
                     !item.name.includes("SEX") &&
-                    !item.name.includes("HENTAI")
+                    !item.name.includes("HENTAI") &&
+                    !arrTags.includes("NSFW") &&
+                    !arrTags.includes("Sexual Content") &&
+                    !arrTags.includes("hentai")
                   ) {
                     return (
                       <section className="one-game" key={item.id}>
@@ -134,6 +146,54 @@ const Home = () => {
                           </div>
                         </section>
                       </section>
+                    );
+                  } else {
+                    return (
+                      <>
+                        <section className="one-game" key={item.id}>
+                          {item.background_image ? (
+                            <div className="one-game-pic">
+                              <Link to={`/game/${item.id}`}>
+                                <img src={Aubergines} />
+                              </Link>
+                              <div className="minus-eighteen">
+                                <BsFillExclamationOctagonFill />
+                                <p>- 18</p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="one-game-pic">
+                              <Link to={`/game/${item.id}`}>
+                                <img src={placeHolder} />
+                              </Link>
+                            </div>
+                          )}
+                          <section className="one-game-infos">
+                            <div className="all-platforms">
+                              {item.platforms &&
+                                item.platforms.map((itembis) => {
+                                  return (
+                                    <div
+                                      className="one-platform"
+                                      key={itembis.platform.id}
+                                    >
+                                      <p>{itembis.platform.name}</p>
+                                    </div>
+                                  );
+                                })}
+                            </div>
+                            {item.name ? (
+                              <h2>{item.name}</h2>
+                            ) : (
+                              <h2>Unknown title</h2>
+                            )}
+                            <div className="like-button">
+                              <button>Add</button>
+                              <FaPlus />
+                            </div>
+                          </section>
+                        </section>
+                      </>
                     );
                   }
                 })}
