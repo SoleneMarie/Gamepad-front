@@ -4,7 +4,9 @@ const LeftMenu = () => {
   return (
     <>
       <nav className="menu">
-        <button>Log in</button>
+        <Link to="/user/login">
+          <button>Log in</button>
+        </Link>
         <Link to="/user/signup">
           <button>Sign up</button>
         </Link>

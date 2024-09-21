@@ -4,6 +4,7 @@ import Footer from "./Components/Footer";
 import LeftMenu from "./Components/LeftMenu";
 import Header from "./Components/Header";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUp = ({ cookieFunc }) => {
   const [username, setUsername] = useState("");
@@ -37,10 +38,11 @@ const SignUp = ({ cookieFunc }) => {
           formData
         );
         console.log(response.data);
+        const id = response.data.account._id;
         const token = response.data.account.token;
         cookieFunc(token);
         setIsLoading(false);
-        navigate("/user/profile");
+        navigate(`/user/profile/${id}`);
       } catch (error) {
         console.log(error);
         setIsLoading(false);
@@ -55,7 +57,7 @@ const SignUp = ({ cookieFunc }) => {
         <LeftMenu />
         <section className="sign-up">
           <h1>Your character sheet </h1>
-          <section className="sign-up-form">
+          <section className="form">
             <form onSubmit={submitFunc}>
               <div className="one-form-field">
                 <h3>Choose your username</h3>
@@ -127,6 +129,12 @@ const SignUp = ({ cookieFunc }) => {
               </div>
               <button>Create your profile</button>
             </form>
+            <p>
+              Already have an account?{" "}
+              <Link to="/user/login">
+                <span>Login</span>
+              </Link>
+            </p>
           </section>
         </section>
       </main>

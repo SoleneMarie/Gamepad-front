@@ -65,7 +65,11 @@ const Stores = () => {
                     {item.games &&
                       item.games.map((itemBis) => {
                         return (
-                          <GetPicsById name={itemBis.name} id={itemBis.id} />
+                          <GetPicsById
+                            name={itemBis.name}
+                            key={itemBis.id}
+                            id={itemBis.id}
+                          />
                         );
                       })}
                   </section>

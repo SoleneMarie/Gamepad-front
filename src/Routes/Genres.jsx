@@ -63,6 +63,7 @@ const Genres = () => {
                             return (
                               <GetPicsById
                                 name={itemBis.name}
+                                key={itemBis.id}
                                 id={itemBis.id}
                               />
                             );

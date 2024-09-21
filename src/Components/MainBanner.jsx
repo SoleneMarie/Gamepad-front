@@ -65,6 +65,7 @@ const MainBanner = ({
                 min="1"
                 max={lastPage}
                 onChange={(event) => {
+                  event.preventDefault();
                   setPage(event.target.value);
                 }}
               />

@@ -11,6 +11,7 @@ import Stores from "./Routes/Stores";
 import GetPicsById from "./Components/GetPicsById";
 import SignUp from "./SignUp";
 import Profile from "./Routes/Profile";
+import Login from "./Routes/Login";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -21,9 +22,11 @@ function App() {
     if (token) {
       Cookies.set("token", token, { expires: 30 });
       setToken(token);
+      console.log("token registered");
     } else {
       Cookies.remove("token");
       setToken(null);
+      console.log("token removed");
     }
   };
   /* ---------------------------------------------------------- */
@@ -59,7 +62,11 @@ function App() {
             path="/user/signup"
             element={<SignUp cookieFunc={cookieFunc} />}
           />
-          <Route path="/user/profile" element={<Profile token={token} />} />
+          <Route
+            path="/user/login"
+            element={<Login cookieFunc={cookieFunc} />}
+          />
+          <Route path="/user/profile/:id" element={<Profile token={token} />} />
         </Routes>
       </Router>
     </>
