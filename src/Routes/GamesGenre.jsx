@@ -10,7 +10,7 @@ import LeftMenu from "../Components/LeftMenu";
 import placeHolder from "../pictures/placeholder.png";
 import PageNav from "../Components/PageNav";
 
-const GameGenre = () => {
+const GameGenre = ({ token, id, logoutFunc }) => {
   const [isLoadingGenre, setIsLoadingGenre] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [dataGenre, setDataGenre] = useState({});
@@ -77,7 +77,7 @@ const GameGenre = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <MainBanner
               setSearch={setSearch}
@@ -101,7 +101,7 @@ const GameGenre = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <section className="genre-description">
               <h1>{dataGenre.name}</h1>

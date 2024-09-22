@@ -5,7 +5,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 
-const Profile = ({ token }) => {
+const Profile = ({ token, logoutFunc }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,7 +37,7 @@ const Profile = ({ token }) => {
           <Header />
           <main>
             <section className="content">
-              <LeftMenu />
+              <LeftMenu token={token} logoutFunc={logoutFunc} />
               <section className="profile">
                 <section className="profile-infos">
                   <div className="profile-pic">
@@ -84,7 +84,7 @@ const Profile = ({ token }) => {
         <Header />
         <main>
           <section className="content">
-            <LeftMenu />
+            <LeftMenu token={token} logoutFunc={logoutFunc} />
             <p>Loading...</p>
             <Footer />
           </section>

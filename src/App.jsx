@@ -15,6 +15,7 @@ import Login from "./Routes/Login";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [id, setId] = useState("");
 
   /* --------- Ma fonction qui gère le token et le 🍪 -------- */
 
@@ -35,6 +36,7 @@ function App() {
   const logoutFunc = () => {
     Cookies.remove("token");
     setToken(null);
+    setId("");
   };
   /* ---------------------------------------------------------- */
 
@@ -42,31 +44,61 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home token={token} id={id} logoutFunc={logoutFunc} />}
+          />
           <Route
             path="/game/:id"
             element={
               <>
-                <OneGame />
+                <OneGame token={token} id={id} logoutFunc={logoutFunc} />
                 <GetPicsById />
               </>
             }
           />
-          <Route path="/game/:id/screenshots" element={<OneGame />} />
-          <Route path="/genres" element={<Genres />} />
-          <Route path="/games/:id" element={<GamesGenre />} />
-          <Route path="/genres/:id" element={<GamesGenre />} />
-          <Route path="/platforms" element={<Platforms />} />
-          <Route path="/stores" element={<Stores />} />
+          <Route
+            path="/game/:id/screenshots"
+            element={<OneGame token={token} id={id} logoutFunc={logoutFunc} />}
+          />
+          <Route
+            path="/genres"
+            element={<Genres token={token} id={id} logoutFunc={logoutFunc} />}
+          />
+          <Route
+            path="/games/:id"
+            element={
+              <GamesGenre token={token} id={id} logoutFunc={logoutFunc} />
+            }
+          />
+          <Route
+            path="/genres/:id"
+            element={
+              <GamesGenre token={token} id={id} logoutFunc={logoutFunc} />
+            }
+          />
+          <Route
+            path="/platforms"
+            element={
+              <Platforms token={token} id={id} logoutFunc={logoutFunc} />
+            }
+          />
+          <Route
+            path="/stores"
+            element={<Stores token={token} id={id} logoutFunc={logoutFunc} />}
+          />
           <Route
             path="/user/signup"
-            element={<SignUp cookieFunc={cookieFunc} />}
+            element={<SignUp cookieFunc={cookieFunc} setId={setId} />}
           />
           <Route
             path="/user/login"
-            element={<Login cookieFunc={cookieFunc} />}
+            element={<Login cookieFunc={cookieFunc} setId={setId} />}
           />
-          <Route path="/user/profile/:id" element={<Profile token={token} />} />
+          <Route
+            path="/user/profile/:id"
+            element={<Profile token={token} logoutFunc={logoutFunc} />}
+          />
         </Routes>
       </Router>
     </>

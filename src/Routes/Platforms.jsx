@@ -7,7 +7,7 @@ import LeftMenu from "../Components/LeftMenu";
 import PageNav from "../Components/PageNav";
 import GetPicsById from "../Components/GetPicsById";
 
-const Platforms = () => {
+const Platforms = ({ token, id, logoutFunc }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(1);
@@ -43,7 +43,7 @@ const Platforms = () => {
         <Header />
         <main>
           <section className="content">
-            <LeftMenu />
+            <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
             <p>Loading...</p>
             <Footer />
           </section>
@@ -58,7 +58,7 @@ const Platforms = () => {
           <Header />
           <main>
             <section className="content">
-              <LeftMenu />
+              <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
               <section className="all-platforms">
                 {data.map((item) => {
                   return (
@@ -77,7 +77,7 @@ const Platforms = () => {
                       {item.games &&
                         item.games.map((itemBis) => {
                           return (
-                            <GetPicsById name={itemBis.name} id={itemBis.id} />
+                            <GetPicsById name={itemBis.name} key={itemBis.id} />
                           );
                         })}
                     </section>

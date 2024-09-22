@@ -6,10 +6,13 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ cookieFunc }) => {
+const Login = ({ cookieFunc, setId }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [emptyError, setEmptyError] = useState(false);
+  const [userError, setUserError] = useState(false);
+  const [passError, setPassError] = useState(false);
   const navigate = useNavigate();
   const idData = {
     username: username,
@@ -18,6 +21,12 @@ const Login = ({ cookieFunc }) => {
 
   const loginFunc = async (event) => {
     event.preventDefault();
+    setEmptyError(false);
+    setPassError(false);
+    setUserError(false);
+    if (!username || !password) {
+      setEmptyError(true);
+    }
     if (!isLoading) {
       setIsLoading(true);
       try {
@@ -27,6 +36,7 @@ const Login = ({ cookieFunc }) => {
         );
 
         const id = response.data._id;
+        setId(id);
         const token = response.data.token;
 
         console.log("token : ", token);
@@ -34,7 +44,27 @@ const Login = ({ cookieFunc }) => {
         setIsLoading(false);
         navigate(`/user/profile/${id}`);
       } catch (error) {
-        console.log(error);
+        if (error.response) {
+          if (error.response.data.message === "warning, empty fields") {
+            setEmptyError(true);
+            setIsLoading(false);
+            return;
+          }
+          if (error.response.data.message === "wrong password") {
+            setPassError(true);
+            setIsLoading(false);
+            return;
+          }
+          if (
+            error.response.data.message ===
+            "no account existing for this username"
+          ) {
+            setUserError(true);
+            setIsLoading(false);
+            return;
+          }
+        }
+
         setIsLoading(false);
       }
     }
@@ -76,6 +106,22 @@ const Login = ({ cookieFunc }) => {
             </div>
             <button>Log in</button>
           </form>
+          <div className="error-messages">
+            {userError && (
+              <p className="one-error-message">
+                Never heared about this username... <br />
+                Maybe you wanted to sign up?
+              </p>
+            )}
+
+            {passError && (
+              <p className="one-error-message">Invalid password : try again!</p>
+            )}
+
+            {emptyError && (
+              <p className="one-error-message">Please complete all fields!</p>
+            )}
+          </div>
           <p>
             Don't have an account yet?
             <Link to="/user/signup">

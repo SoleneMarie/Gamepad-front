@@ -5,7 +5,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import GetPicsById from "../Components/GetPicsById";
-const Genres = () => {
+const Genres = ({ token, id, logoutFunc }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
@@ -28,7 +28,7 @@ const Genres = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <section className="all-genres-infos"></section>
             <p>Loading content</p>
@@ -42,7 +42,7 @@ const Genres = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <section className="all-genres-infos">
               {data &&

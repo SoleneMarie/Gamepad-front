@@ -9,9 +9,9 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 
-const OneGame = () => {
+const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
-  const id = param.id;
+  const idgame = param.id;
   const [data, setData] = useState({});
   const [dataScreens, setDataScreens] = useState([]);
   const [isLoading, setisLoading] = useState(false);
@@ -21,7 +21,9 @@ const OneGame = () => {
     const getGame = async () => {
       setisLoading(true);
       try {
-        const response = await axios.get(`http://localhost:3000/game/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000/game/${idgame}`
+        );
         setData(response.data);
 
         setisLoading(false);
@@ -37,7 +39,7 @@ const OneGame = () => {
     const fetchScreensFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/game/${id}/screenshots`
+          `http://localhost:3000/game/${idgame}/screenshots`
         );
         setDataScreens(response.data.results);
         setIsLoadingScreens(false);
@@ -54,7 +56,7 @@ const OneGame = () => {
         <Header />
         <main>
           <section className="content">
-            <LeftMenu />
+            <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
             <p>Loading...</p>
             <Footer />
           </section>
@@ -68,7 +70,7 @@ const OneGame = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <section className="all-details-one-game">
               <h1>{data.name}</h1>

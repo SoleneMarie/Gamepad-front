@@ -1,16 +1,32 @@
 import { Link } from "react-router-dom";
 
-const LeftMenu = () => {
+const LeftMenu = ({ token, id, logoutFunc }) => {
   return (
     <>
-      <nav className="menu">
-        <Link to="/user/login">
-          <button>Log in</button>
-        </Link>
-        <Link to="/user/signup">
-          <button>Sign up</button>
-        </Link>
-      </nav>
+      {token ? (
+        <nav className="menu">
+          <Link to={`/user/profile/${id}`}>
+            <button>My profile</button>
+          </Link>
+          <button
+            onClick={() => {
+              logoutFunc();
+            }}
+          >
+            Log out
+          </button>
+        </nav>
+      ) : (
+        <nav className="menu">
+          <Link to="/user/login">
+            <button>Log in</button>
+          </Link>
+          <Link to="/user/signup">
+            <button>Sign up</button>
+          </Link>
+        </nav>
+      )}
+
       <nav className="menu">
         <Link to="/">
           <button>HOME</button>

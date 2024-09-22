@@ -11,7 +11,7 @@ import PageNav from "../Components/PageNav";
 import Aubergines from "../pictures/aubergines.jpg";
 import { BsFillExclamationOctagonFill } from "react-icons/bs";
 
-const Home = () => {
+const Home = ({ token, id, logoutFunc }) => {
   const [search, setSearch] = useState("");
   const [ordering, setOrdering] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +48,7 @@ const Home = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <MainBanner
               setSearch={setSearch}
@@ -71,7 +71,7 @@ const Home = () => {
       <>
         <Header />
         <main>
-          <LeftMenu />
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           {/* -----------------------------------------------------------------------------------------------
           -------------------------------------------CONTENU PRINCIPAL --------------------------------------
           ------------------------------------------------------------------------------------------------- */}
@@ -140,10 +140,12 @@ const Home = () => {
                           ) : (
                             <h2>Unknown title</h2>
                           )}
-                          <div className="like-button">
-                            <button>Add</button>
-                            <FaPlus />
-                          </div>
+                          {token && (
+                            <div className="like-button">
+                              <button>Add</button>
+                              <FaPlus />
+                            </div>
+                          )}
                         </section>
                       </section>
                     );
@@ -187,10 +189,12 @@ const Home = () => {
                             ) : (
                               <h2>Unknown title</h2>
                             )}
-                            <div className="like-button">
-                              <button>Add</button>
-                              <FaPlus />
-                            </div>
+                            {token && (
+                              <div className="like-button">
+                                <button>Add</button>
+                                <FaPlus />
+                              </div>
+                            )}
                           </section>
                         </section>
                       </>

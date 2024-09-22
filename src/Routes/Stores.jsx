@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import GetPicsById from "../Components/GetPicsById";
 
-const Stores = () => {
+const Stores = ({ token, id }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,7 +30,7 @@ const Stores = () => {
       <Header />
       <main>
         <section className="content">
-          <LeftMenu />
+          <LeftMenu token={token} id={id} />
           <p>Loading...</p>
           <Footer />
         </section>
@@ -44,7 +44,7 @@ const Stores = () => {
       <Header />
       <main>
         <section className="content">
-          <LeftMenu />
+          <LeftMenu token={token} id={id} />
           <section className="all-stores">
             {data &&
               data.map((item) => {
