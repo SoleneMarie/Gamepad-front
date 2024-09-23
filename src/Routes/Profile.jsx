@@ -4,44 +4,11 @@ import axios from "axios";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
-import CleanText from "../Components/CleanText";
-import { GoStarFill } from "react-icons/go";
+import LoadFavourites from "../Components/LoadFavourites";
 
 const Profile = ({ token, logoutFunc }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
-  /* Ma fonction pour récupérer le data des jeux favoris */
-  const getFavouritesFunc = async (id) => {
-    try {
-      const response = await axios.get(`/game/${id}`);
-      return (
-        <>
-          <section className="one-game">
-            <div>
-              <img src={response.data.background_image} />
-            </div>
-            <h2>{response.data.name}</h2>
-            <CleanText data={response.data} />
-            <section className="platforms-rating">
-              {response.data.platform &&
-                response.data.platforms.map((item) => {
-                  return <p key={item.platform.id}>{item.platform.name}</p>;
-                })}
-              <div>
-                <GoStarFill />
-              </div>
-              <p>{response.data.rating}</p>
-            </section>
-          </section>
-        </>
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  /* --------------------------------------------------- */
 
   const params = useParams();
   const id = params.id;
@@ -55,6 +22,7 @@ const Profile = ({ token, logoutFunc }) => {
           `http://localhost:3000/user/profile/${id}`
         );
         setData(response.data);
+        console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -90,7 +58,8 @@ const Profile = ({ token, logoutFunc }) => {
                   <div className="profile-favourite-games">
                     {data.favourites &&
                       data.favourites.map((item) => {
-                        return getFavouritesFunc(item);
+                        console.log(item);
+                        return <LoadFavourites id={item} />;
                       })}
                   </div>
                 </section>

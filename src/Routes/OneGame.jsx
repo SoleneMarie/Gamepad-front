@@ -8,6 +8,7 @@ import CleanText from "../Components/CleanText";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
+import SimilarGames from "../Components/SimilarGames";
 
 const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
@@ -64,7 +65,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
       </>
     );
   } else {
-    console.log(data);
+    data.tags && console.log(data.tags[0].id);
     console.log(dataScreens);
     return (
       <>
@@ -117,6 +118,9 @@ const OneGame = ({ token, id, logoutFunc }) => {
                   </Link>
                 )}
               </section>
+            </section>
+            <section className="similar-games">
+              {data.tags && <SimilarGames id={data.tags[0].id} />}
             </section>
             <section className="carousel">
               {dataScreens.map((item) => {

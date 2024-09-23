@@ -77,7 +77,11 @@ const Platforms = ({ token, id, logoutFunc }) => {
                       {item.games &&
                         item.games.map((itemBis) => {
                           return (
-                            <GetPicsById name={itemBis.name} key={itemBis.id} />
+                            <GetPicsById
+                              name={itemBis.name}
+                              id={itemBis.id}
+                              key={itemBis.id}
+                            />
                           );
                         })}
                     </section>
