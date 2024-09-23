@@ -90,7 +90,7 @@ const Profile = ({ token, logoutFunc }) => {
                   <div className="profile-favourite-games">
                     {data.favourites &&
                       data.favourites.map((item) => {
-                        getFavouritesFunc(item);
+                        return getFavouritesFunc(item);
                       })}
                   </div>
                 </section>
