@@ -6,7 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ cookieFunc, setId }) => {
+const Login = ({ cookieFunc }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -36,11 +36,10 @@ const Login = ({ cookieFunc, setId }) => {
         );
 
         const id = response.data._id;
-        setId(id);
         const token = response.data.token;
 
         console.log("token : ", token);
-        cookieFunc(token);
+        cookieFunc(token, id);
         setIsLoading(false);
         navigate(`/user/profile/${id}`);
       } catch (error) {

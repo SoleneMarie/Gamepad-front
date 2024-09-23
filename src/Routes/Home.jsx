@@ -21,6 +21,22 @@ const Home = ({ token, id, logoutFunc }) => {
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(2);
 
+  console.log("id props : ", id);
+  /* ---------------- Ma fonction pour gérer les favoris ---------------- */
+
+  const favoriteFunc = async (id, idGame) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/user/favorites/${id}`,
+        { favorites: idGame }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  /* ------------------------------------------------------------------- */
   useEffect(() => {
     setIsLoading(true);
     const dataGamesFunc = async () => {
@@ -88,6 +104,9 @@ const Home = ({ token, id, logoutFunc }) => {
             <section className="all-games">
               {data.length > 0 &&
                 data.map((item) => {
+                  let idGame = item.id;
+                  console.log("id jeux : ", idGame);
+                  console.log("id user : ", id);
                   const arrTags = [];
                   if (item.tags) {
                     item.tags.map((tag) => {
@@ -142,7 +161,13 @@ const Home = ({ token, id, logoutFunc }) => {
                           )}
                           {token && (
                             <div className="like-button">
-                              <button>Add</button>
+                              <button
+                                onClick={() => {
+                                  favoriteFunc(id, idGame);
+                                }}
+                              >
+                                Add
+                              </button>
                               <FaPlus />
                             </div>
                           )}
@@ -191,7 +216,13 @@ const Home = ({ token, id, logoutFunc }) => {
                             )}
                             {token && (
                               <div className="like-button">
-                                <button>Add</button>
+                                <button
+                                  onClick={() => {
+                                    favoriteFunc(id, idGame);
+                                  }}
+                                >
+                                  Add
+                                </button>
                                 <FaPlus />
                               </div>
                             )}

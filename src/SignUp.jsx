@@ -6,7 +6,7 @@ import Header from "./Components/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const SignUp = ({ cookieFunc, setId }) => {
+const SignUp = ({ cookieFunc }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState({});
@@ -74,9 +74,9 @@ const SignUp = ({ cookieFunc, setId }) => {
         );
         console.log(response.data);
         const id = response.data.id;
-        setId(id);
+
         const token = response.data.account.token;
-        cookieFunc(token);
+        cookieFunc(token, id);
         setIsLoading(false);
 
         navigate(`/user/profile/${id}`);

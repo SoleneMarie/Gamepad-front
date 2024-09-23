@@ -15,18 +15,22 @@ import Login from "./Routes/Login";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
-  const [id, setId] = useState("");
+  const [id, setId] = useState(Cookies.get("id") || null);
 
   /* --------- Ma fonction qui gère le token et le 🍪 -------- */
 
-  const cookieFunc = (token) => {
+  const cookieFunc = (token, id) => {
     if (token) {
       Cookies.set("token", token, { expires: 30 });
       setToken(token);
       console.log("token registered");
+      Cookies.set("id", id, { expires: 30 });
+      setId(id);
     } else {
       Cookies.remove("token");
       setToken(null);
+      Cookies.remove("id");
+      setId(null);
       console.log("token removed");
     }
   };
@@ -89,11 +93,11 @@ function App() {
           />
           <Route
             path="/user/signup"
-            element={<SignUp cookieFunc={cookieFunc} setId={setId} />}
+            element={<SignUp cookieFunc={cookieFunc} />}
           />
           <Route
             path="/user/login"
-            element={<Login cookieFunc={cookieFunc} setId={setId} />}
+            element={<Login cookieFunc={cookieFunc} />}
           />
           <Route
             path="/user/profile/:id"
