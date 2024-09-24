@@ -1,13 +1,16 @@
-import MainLogo from "../pictures/header-pic.png";
+import MainLogo from "../pictures/header-pic.jpeg";
 
 const Header = () => {
   return (
     <header>
-      <p>GAMEPAD</p>
-      <div>
-        <img src={MainLogo} />
-      </div>
-      <div className="login-space"></div>
+      <section className="first-line-header">
+        <div className="title-header">
+          <p>GAMEPAD</p>
+        </div>
+        <div className="header-img">
+          <img src={MainLogo} />
+        </div>
+      </section>
     </header>
   );
 };

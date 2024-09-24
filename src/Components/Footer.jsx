@@ -1,4 +1,4 @@
-import FooterPic from "../pictures/footerpic.jpg";
+import FooterPic from "../pictures/footerpic.webp";
 
 const Footer = () => {
   return (

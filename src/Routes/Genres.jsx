@@ -47,27 +47,34 @@ const Genres = ({ token, id, logoutFunc }) => {
             <section className="all-genres-infos">
               {data &&
                 data.map((item) => {
+                  console.log(item.id);
                   return (
                     <section className="one-genre" key={item.id}>
-                      <div>
+                      <div className="one-genre-main-div">
+                        {console.log(`/games/${item.id}`)}
                         <Link to={`/games/${item.id}`}>
-                          <img src={item.image_background} />
+                          <img
+                            className="one-genre-main-img"
+                            src={item.image_background}
+                          />
                         </Link>
                       </div>
                       <section className="one-genre-infos">
                         <h2>{item.name}</h2>
                         <p>See {item.games_count} games</p>
-                        <h3>Best rated games for this genre </h3>
-                        {item.games &&
-                          item.games.map((itemBis) => {
-                            return (
-                              <GetPicsById
-                                name={itemBis.name}
-                                key={itemBis.id}
-                                id={itemBis.id}
-                              />
-                            );
-                          })}
+                        <section className="example-games">
+                          <h3>Best rated games for this genre </h3>
+                          {item.games &&
+                            item.games.map((itemBis) => {
+                              return (
+                                <GetPicsById
+                                  name={itemBis.name}
+                                  key={itemBis.id}
+                                  id={itemBis.id}
+                                />
+                              );
+                            })}
+                        </section>
                       </section>
                     </section>
                   );

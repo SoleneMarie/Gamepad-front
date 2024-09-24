@@ -25,15 +25,15 @@ const PageNav = ({ page, setPage, lastPage }) => {
       ) : page > 1 && page < lastPage ? (
         <section className="nav-pages">
           <section className="left-button-class">
-            <button className="first-page-but" onClick={() => setPage(1)}>
-              Go back to first page
-            </button>
             <button
               className="left-but"
               onClick={() => setPage(Number(page) - 1)}
             >
               <p>Previous page</p>
               <img src={arrowLeft} />
+            </button>
+            <button className="first-page-but" onClick={() => setPage(1)}>
+              Go to first page
             </button>
           </section>
           <section className="left-button-class">
@@ -52,14 +52,14 @@ const PageNav = ({ page, setPage, lastPage }) => {
       ) : (
         <section className="nav-pages">
           <section className="left-button-class">
-            <button className="first-page-but" onClick={() => setPage(1)}>
-              Go back to first page
-            </button>
             <button className="left-but">
               <img src={arrowLeft} onClick={() => setPage(Number(page) - 1)} />
+              Go to first page
+            </button>
+            <button className="first-page-but" onClick={() => setPage(1)}>
+              <p>Previous page</p>
             </button>
           </section>
-          <p>Previous page</p>
           <section className="left-button-class"></section>
         </section>
       )}

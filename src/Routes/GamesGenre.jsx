@@ -23,8 +23,9 @@ const GameGenre = ({ token, id, logoutFunc }) => {
   const [lastPage, setLastPage] = useState(2);
 
   const param = useParams();
-  const genreId = param.id;
-  console.log(param);
+  const genreId = param.genres;
+  console.log(genreId);
+  console.log("les paramètres reçus : ", param);
 
   useEffect(() => {
     setIsLoadingGenre(true);

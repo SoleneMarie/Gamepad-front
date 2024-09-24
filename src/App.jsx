@@ -1,4 +1,4 @@
-import "./App.css";
+import "./CSS/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -8,7 +8,6 @@ import Genres from "./Routes/Genres";
 import GamesGenre from "./Routes/GamesGenre";
 import Platforms from "./Routes/Platforms";
 import Stores from "./Routes/Stores";
-import GetPicsById from "./Components/GetPicsById";
 import SignUp from "./SignUp";
 import Profile from "./Routes/Profile";
 import Login from "./Routes/Login";
@@ -57,7 +56,6 @@ function App() {
             element={
               <>
                 <OneGame token={token} id={id} logoutFunc={logoutFunc} />
-                <GetPicsById />
               </>
             }
           />
@@ -70,7 +68,7 @@ function App() {
             element={<Genres token={token} id={id} logoutFunc={logoutFunc} />}
           />
           <Route
-            path="/games/:id"
+            path="/games/:genres"
             element={
               <GamesGenre token={token} id={id} logoutFunc={logoutFunc} />
             }

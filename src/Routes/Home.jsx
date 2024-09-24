@@ -9,7 +9,9 @@ import Header from "../Components/Header";
 import MainBanner from "../Components/MainBanner";
 import PageNav from "../Components/PageNav";
 import Aubergines from "../pictures/aubergines.jpg";
-import { BsFillExclamationOctagonFill } from "react-icons/bs";
+import { BsExclamationTriangle } from "react-icons/bs";
+import notFound from "../pictures/not-found.jpg";
+import loading from "../pictures/loading.jpg";
 
 const Home = ({ token, id, logoutFunc }) => {
   const [search, setSearch] = useState("");
@@ -47,9 +49,19 @@ const Home = ({ token, id, logoutFunc }) => {
         setData(response.data.results);
         setCount(response.data.count);
         if (count % pageSize === 0) {
-          setLastPage(count / pageSize);
+          /*setLastPage(count / pageSize)*/
+          if (count / pageSize < 250) {
+            setLastPage(count / pageSize);
+          } else {
+            setLastPage(250);
+          }
         } else {
-          setLastPage(Math.trunc(count / pageSize + 1));
+          if (count / pageSize + 1 < 250) {
+            setLastPage(Math.trunc(count / pageSize) + 1);
+          } else {
+            setLastPage(250);
+          }
+          /*setLastPage(Math.trunc(count / pageSize + 1));*/
         }
         setIsLoading(false);
       } catch (error) {
@@ -65,7 +77,7 @@ const Home = ({ token, id, logoutFunc }) => {
         <Header />
         <main>
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-          <section className="content">
+          <section className="content" id="loading-content">
             <MainBanner
               setSearch={setSearch}
               setOrdering={setOrdering}
@@ -75,8 +87,12 @@ const Home = ({ token, id, logoutFunc }) => {
               lastPage={lastPage}
               isLoading={isLoading}
             />
-
-            <p>Loading content</p>
+            <section className="all-games">
+              <section className="no-game-found">
+                <img src={loading} />
+                <p>Hmmm ... wait for it...</p>
+              </section>
+            </section>
             <Footer />
           </section>
         </main>
@@ -102,7 +118,7 @@ const Home = ({ token, id, logoutFunc }) => {
             />
             {/* -------------------------------- RECUPERATION DU CONTENU -------------------------------- */}
             <section className="all-games">
-              {data.length > 0 &&
+              {data.length > 0 ? (
                 data.map((item) => {
                   let idGame = item.id;
                   console.log("id jeux : ", idGame);
@@ -184,8 +200,8 @@ const Home = ({ token, id, logoutFunc }) => {
                                 <img src={Aubergines} />
                               </Link>
                               <div className="minus-eighteen">
-                                <BsFillExclamationOctagonFill />
-                                <p>- 18</p>
+                                <BsExclamationTriangle />
+                                <p>-18</p>
                               </div>
                             </div>
                           ) : (
@@ -231,7 +247,15 @@ const Home = ({ token, id, logoutFunc }) => {
                       </>
                     );
                   }
-                })}
+                })
+              ) : (
+                <section className="all-games">
+                  <section className="no-game-found">
+                    <img src={notFound} />
+                    <p>Hmmm ... found nothing here</p>
+                  </section>
+                </section>
+              )}
             </section>
             {/* ---------------------------- Ma navigation ---------------------------- */}
             <PageNav page={page} setPage={setPage} lastPage={lastPage} />

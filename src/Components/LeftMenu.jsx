@@ -3,30 +3,6 @@ import { Link } from "react-router-dom";
 const LeftMenu = ({ token, id, logoutFunc }) => {
   return (
     <>
-      {token ? (
-        <nav className="menu">
-          <Link to={`/user/profile/${id}`}>
-            <button>My profile</button>
-          </Link>
-          <button
-            onClick={() => {
-              logoutFunc();
-            }}
-          >
-            Log out
-          </button>
-        </nav>
-      ) : (
-        <nav className="menu">
-          <Link to="/user/login">
-            <button>Log in</button>
-          </Link>
-          <Link to="/user/signup">
-            <button>Sign up</button>
-          </Link>
-        </nav>
-      )}
-
       <nav className="menu">
         <Link to="/">
           <button>HOME</button>
@@ -34,6 +10,8 @@ const LeftMenu = ({ token, id, logoutFunc }) => {
         <Link to="/genres">
           <button>GENRES</button>
         </Link>
+      </nav>
+      <nav className="menu">
         <Link to="/platforms">
           <button>PLATFORMS</button>
         </Link>
@@ -41,6 +19,29 @@ const LeftMenu = ({ token, id, logoutFunc }) => {
           <button>STORES</button>
         </Link>
       </nav>
+      {token ? (
+        <nav className="menu" id="logs">
+          <Link to={`/user/profile/${id}`}>
+            <button>MY PAD</button>
+          </Link>
+          <button
+            onClick={() => {
+              logoutFunc();
+            }}
+          >
+            LOG OUT
+          </button>
+        </nav>
+      ) : (
+        <nav className="menu" id="logs">
+          <Link to="/user/login">
+            <button>LOG IN</button>
+          </Link>
+          <Link to="/user/signup">
+            <button>SIGN UP</button>
+          </Link>
+        </nav>
+      )}
     </>
   );
 };
