@@ -9,6 +9,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import placeHolder from "../pictures/placeholder.png";
 import PageNav from "../Components/PageNav";
+import notFound from "../pictures/not-found.jpg";
 
 const GameGenre = ({ token, id, logoutFunc }) => {
   const [isLoadingGenre, setIsLoadingGenre] = useState(false);
@@ -16,14 +17,20 @@ const GameGenre = ({ token, id, logoutFunc }) => {
   const [dataGenre, setDataGenre] = useState({});
   const [data, setData] = useState({});
   const [count, setCount] = useState(1);
-  const [search, setSearch] = useState("");
+  const [searchGenre, setSearchGenre] = useState("");
   const [ordering, setOrdering] = useState("");
   const [pageSize, setPageSize] = useState(40);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(2);
 
   const param = useParams();
-  const genreId = param.genres;
+  let genreId;
+  if (param.genres) {
+    genreId = param.genres;
+  } else {
+    genreId = param.id;
+  }
+
   console.log(genreId);
   console.log("les paramètres reçus : ", param);
 
@@ -48,7 +55,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
     const gamesGenreFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/games/${genreId}?pagesize=${pageSize}&search=${search}&ordering=${ordering}&page=${page}`
+          `http://localhost:3000/games/${genreId}?pagesize=${pageSize}&search=${searchGenre}&ordering=${ordering}&page=${page}`
         );
         setData(response.data.results);
         setCount(response.data.count);
@@ -71,7 +78,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
       }
     };
     gamesGenreFunc();
-  }, [ordering, search, page, count]);
+  }, [ordering, searchGenre, page, count]);
 
   if (isLoading || isLoadingGenre) {
     return (
@@ -81,7 +88,8 @@ const GameGenre = ({ token, id, logoutFunc }) => {
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
             <MainBanner
-              setSearch={setSearch}
+              setSearch={setSearchGenre}
+              search={searchGenre}
               setOrdering={setOrdering}
               count={count}
               page={page}
@@ -104,72 +112,87 @@ const GameGenre = ({ token, id, logoutFunc }) => {
         <main>
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content">
-            <section className="genre-description">
-              <h1>{dataGenre.name}</h1>
-            </section>
             <MainBanner
-              setSearch={setSearch}
+              search={searchGenre}
+              setSearch={setSearchGenre}
               setOrdering={setOrdering}
               count={count}
               page={page}
               setPage={setPage}
               lastPage={lastPage}
             />
-            <section className="all-genres-infos">
-              {data.length > 0 &&
-                data.map((item) => {
-                  if (
-                    !item.name.includes("sex") &&
-                    !item.name.includes("hentai") &&
-                    !item.name.includes("Sex") &&
-                    !item.name.includes("Hentai") &&
-                    !item.name.includes("SEX") &&
-                    !item.name.includes("HENTAI")
-                  ) {
-                    return (
-                      <section className="one-game" key={item.id}>
-                        {item.background_image ? (
-                          <div className="one-game-pic">
-                            <Link to={`/game/${item.id}`}>
-                              <img src={item.background_image} />
-                            </Link>
-                          </div>
-                        ) : (
-                          <div className="one-game-pic">
-                            <Link to={`/game/${item.id}`}>
-                              <img src={placeHolder} />
-                            </Link>
-                          </div>
-                        )}
-                        <section className="one-game-infos">
-                          <div className="all-platforms">
-                            {item.platforms &&
-                              item.platforms.map((itembis) => {
-                                return (
-                                  <div
-                                    className="one-platform"
-                                    key={itembis.platform.id}
-                                  >
-                                    <p>{itembis.platform.name}</p>
-                                  </div>
-                                );
-                              })}
-                          </div>
-                          {item.name ? (
-                            <h2>{item.name}</h2>
-                          ) : (
-                            <h2>Unknown title</h2>
-                          )}
-                          <div className="like-button">
-                            <button>Add</button>
-                            <FaPlus />
-                          </div>
-                        </section>
-                      </section>
-                    );
-                  }
-                })}
-            </section>
+            {lastPage === 0 ? (
+              <section className="all-games">
+                <section className="no-game-found">
+                  <img src={notFound} style={{ height: "300px" }} />
+                  <p>...found nothing here</p>
+                </section>
+              </section>
+            ) : (
+              <>
+                <section className="genre-description">
+                  <h1>{dataGenre.name} games</h1>
+                </section>
+                <section className="all-genres-infos">
+                  {data.length > 0 &&
+                    data.map((item) => {
+                      if (
+                        !item.name.includes("sex") &&
+                        !item.name.includes("hentai") &&
+                        !item.name.includes("Sex") &&
+                        !item.name.includes("Hentai") &&
+                        !item.name.includes("SEX") &&
+                        !item.name.includes("HENTAI")
+                      ) {
+                        return (
+                          <section className="one-game" key={item.id}>
+                            {item.background_image ? (
+                              <div className="one-game-pic">
+                                <Link to={`/game/${item.id}`}>
+                                  <img src={item.background_image} />
+                                </Link>
+                              </div>
+                            ) : (
+                              <div className="one-game-pic">
+                                <Link to={`/game/${item.id}`}>
+                                  <img src={placeHolder} />
+                                </Link>
+                              </div>
+                            )}
+                            <section className="one-game-infos">
+                              <div className="all-platforms">
+                                {item.platforms &&
+                                  item.platforms.map((itembis) => {
+                                    return (
+                                      <div
+                                        className="one-platform"
+                                        key={itembis.platform.id}
+                                      >
+                                        <p>{itembis.platform.name}</p>
+                                      </div>
+                                    );
+                                  })}
+                              </div>
+                              {item.name ? (
+                                <h2>{item.name}</h2>
+                              ) : (
+                                <h2>Unknown title</h2>
+                              )}
+                              {token && (
+                                <div className="like-button">
+                                  <button>Add</button>
+                                  <FaPlus />
+                                </div>
+                              )}
+                            </section>
+                          </section>
+                        );
+                      }
+                    })}
+                </section>
+              </>
+            )}
+
             {/* ---------------------------- Ma navigation ---------------------------- */}
             <PageNav page={page} setPage={setPage} lastPage={lastPage} />
           </section>

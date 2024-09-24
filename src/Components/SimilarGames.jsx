@@ -12,7 +12,7 @@ const SimilarGames = ({ id }) => {
     const getSimilarFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000?tags=${id}&page_size=5&ordering=rating`
+          `http://localhost:3000?tags=${id}&page_size=6&ordering=rating`
         );
         setData(response.data);
         setIsLoading(false);
@@ -32,7 +32,6 @@ const SimilarGames = ({ id }) => {
             return (
               <section className="oneGame" key={item.id}>
                 <Link to={`/game/${item.id}`} target="blank">
-                  {" "}
                   <div>
                     {item.background_image ? (
                       <img src={item.background_image} />

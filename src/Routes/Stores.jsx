@@ -53,32 +53,32 @@ const Stores = ({ token, id }) => {
                     <div>
                       <img src={item.image_background} />
                     </div>
-                    <Link to={item.domain}>
+                    <Link to={`https://${item.domain}`} target="_blank">
                       <h2>{item.name}</h2>
                     </Link>
-                    <p>
-                      There are <span>{item.games_count}</span> available games
-                      on {item.name}
-                    </p>
-                    <p>
-                      Best rated games on <span>{item.name}</span> :{" "}
-                    </p>
-                    {item.games &&
-                      item.games.map((itemBis) => {
-                        return (
-                          <GetPicsById
-                            name={itemBis.name}
-                            key={itemBis.id}
-                            id={itemBis.id}
-                          />
-                        );
-                      })}
+                    <div id="store-game-description">
+                      <p>
+                        Best games on <span>{item.name}</span>{" "}
+                      </p>
+                    </div>
+                    <section className="all-stores-page">
+                      {item.games &&
+                        item.games.map((itemBis) => {
+                          return (
+                            <GetPicsById
+                              name={itemBis.name}
+                              key={itemBis.id}
+                              id={itemBis.id}
+                            />
+                          );
+                        })}
+                    </section>
                   </section>
                 );
               })}
           </section>
-          <Footer />
         </section>
+        <Footer />
       </main>
     </>
   );

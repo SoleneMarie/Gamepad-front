@@ -65,7 +65,6 @@ const OneGame = ({ token, id, logoutFunc }) => {
       </>
     );
   } else {
-    data.tags && console.log(data.tags[0].id);
     console.log(dataScreens);
     return (
       <>
@@ -83,14 +82,18 @@ const OneGame = ({ token, id, logoutFunc }) => {
                 )}
               </div>
               <section className="one-game-all-infos">
-                {data.genres &&
-                  data.genres.map((item) => {
-                    return (
-                      <Link to={`/genres/${item.id}`} key={item.id}>
-                        <div className="one-game-genres">{item.name}</div>
-                      </Link>
-                    );
-                  })}
+                <section className="infos-game-genres">
+                  {data.genres &&
+                    data.genres.map((item) => {
+                      return (
+                        <Link to={`/genres/${item.id}`} key={item.id}>
+                          <div className="one-game-genres">
+                            <h3>{item.name}</h3>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </section>
                 <CleanText data={data} />
                 <div className="one-game-released">
                   <p>
@@ -120,16 +123,23 @@ const OneGame = ({ token, id, logoutFunc }) => {
               </section>
             </section>
             <section className="similar-games">
-              {data.tags && <SimilarGames id={data.tags[0].id} />}
+              {data.tags && data.tags.length > 0 ? (
+                <SimilarGames id={data.tags[0].id} />
+              ) : (
+                <></>
+              )}
             </section>
             <section className="carousel">
-              {dataScreens.map((item) => {
-                return (
-                  <div className="one-screenshot" key={item.id}>
-                    <img src={item.image} />
-                  </div>
-                );
-              })}
+              <h2>{data.name} screenshots</h2>
+              <section className="all-screens">
+                {dataScreens.map((item) => {
+                  return (
+                    <div className="one-screenshot" key={item.id}>
+                      <img src={item.image} />
+                    </div>
+                  );
+                })}
+              </section>
             </section>
           </section>
         </main>

@@ -23,12 +23,14 @@ const GetPicsById = ({ name, id }) => {
 
   if (!isLoadingMin && dataMin) {
     return (
-      <Link key={id} to={`/game/${id}`}>
-        <div className="miniature-pic">
-          <img src={dataMin.background_image} />
-        </div>
-        <p>{name}</p>
-      </Link>
+      <section key={id} className="best-rated-one-div">
+        <Link to={`/game/${id}`}>
+          <div className="miniature-pic">
+            <img src={dataMin.background_image} />
+          </div>
+          <p>{name}</p>
+        </Link>
+      </section>
     );
   }
 };

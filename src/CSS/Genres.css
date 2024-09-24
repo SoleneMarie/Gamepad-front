@@ -50,3 +50,18 @@
 .example-games {
   display: none;
 }
+
+/* ------------------- games genre ------------------ */
+
+.genre-description {
+  position: sticky;
+  top: 240px;
+  background-color: #151515;
+  font-family: "Good Timing";
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.all-genres-infos {
+  gap: 20px;
+}

@@ -1,9 +1,12 @@
 import arrowLeft from "../pictures/arrow-game-left.png";
 import arrowRight from "../pictures/arrow-game-right.png";
+
 const PageNav = ({ page, setPage, lastPage }) => {
   return (
     <>
-      {page === 1 ? (
+      {page === 1 && lastPage === 0 ? (
+        <></>
+      ) : page === 1 ? (
         <section className="nav-pages">
           <section className="left-button-class"></section>
           <section className="right-button-class">

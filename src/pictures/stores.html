@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://localhost:5173/stores -->
+<html lang="en"><canvas style="inset: 0px; pointer-events: none; position: fixed; z-index: 1000000000;" width="360" height="740"></canvas><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+    <script type="module" src="./stores_files/client"></script>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css" data-vite-dev-id="/Users/Solene/LeReacteur-Formation/Gamepad/gamepad-front/src/index.css">/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/Solene/LeReacteur-Formation/Gamepad/gamepad-front/src/CSS/App.css">@font-face {
+    font-family: 'Belinsky Text';
+    src: url('/src/CSS/fonts/BelinskyText-Italic.eot');
+    src: local('Belinsky Text Italic'), local('BelinskyText-Italic'),
+        url('/src/CSS/fonts/BelinskyText-Italic.eot?#iefix') format('embedded-opentype'),
+        url('/src/CSS/fonts/BelinskyText-Italic.woff2') format('woff2'),
+        url('/src/CSS/fonts/BelinskyText-Italic.woff') format('woff'),
+        url('/src/CSS/fonts/BelinskyText-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Belinsky Text';
+    src: url('/src/CSS/fonts/BelinskyText-Bold.eot');
+    src: local('Belinsky Text Bold'), local('BelinskyText-Bold'),
+        url('/src/CSS/fonts/BelinskyText-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/src/CSS/fonts/BelinskyText-Bold.woff2') format('woff2'),
+        url('/src/CSS/fonts/BelinskyText-Bold.woff') format('woff'),
+        url('/src/CSS/fonts/BelinskyText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Belinsky Text';
+    src: url('/src/CSS/fonts/BelinskyText-Regular.eot');
+    src: local('Belinsky Text Regular'), local('BelinskyText-Regular'),
+        url('/src/CSS/fonts/BelinskyText-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/src/CSS/fonts/BelinskyText-Regular.woff2') format('woff2'),
+        url('/src/CSS/fonts/BelinskyText-Regular.woff') format('woff'),
+        url('/src/CSS/fonts/BelinskyText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Belinsky Text';
+    src: url('/src/CSS/fonts/BelinskyText-BoldItalic.eot');
+    src: local('Belinsky Text Bold Italic'), local('BelinskyText-BoldItalic'),
+        url('/src/CSS/fonts/BelinskyText-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('/src/CSS/fonts/BelinskyText-BoldItalic.woff2') format('woff2'),
+        url('/src/CSS/fonts/BelinskyText-BoldItalic.woff') format('woff'),
+        url('/src/CSS/fonts/BelinskyText-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.all-games {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.one-game {
+  width: 90%;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  background-color: #202020;
+  border-radius: 10px;
+}
+
+.one-game-pic {
+  width: 100%;
+  height: 65%;
+  padding: 10px 10px 0 10px;
+  box-sizing: border-box;
+}
+
+.one-game-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.minus-eighteen {
+  top: 8px;
+  right: 8px;
+  font-size: 48px;
+  z-index: 10;
+  margin-top: -50px;
+  margin-left: 10px;
+  display: flex;
+  height: 26px;
+  width: 110px;
+  justify-content: space-between;
+  align-items: center;
+  color: #e9d133;
+  font-weight: bold;
+}
+
+.minus-eighteen p {
+  font-size: 28px;
+  padding-top: 16px;
+}
+
+main {
+  flex-direction: column;
+}
+
+.content h1 {
+  font-weight: bold;
+  color: white;
+  padding: 12px 4px;
+  text-align: center;
+}
+
+#search-game {
+  position: sticky;
+  top: 200px;
+  align-self: center;
+}
+
+.content input {
+  height: 30px;
+  color: #151515;
+  font-family: "Belinsky Text";
+  padding: 3px 8px;
+}
+
+.content select {
+  height: 30px;
+  color: white;
+  background-color: #202020;
+  font-family: "Belinsky Text";
+  padding: 4px;
+}
+
+#search-game {
+  width: 90%;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 150px;
+  height: 100px;
+  background-color: #151515;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sort {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.sort label {
+  margin-right: 20px;
+}
+
+.sort select {
+  width: 180px;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.search-page {
+  width: 90%;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  margin-left: 20px;
+}
+
+.search-page label {
+  margin-right: 80px;
+  border: none;
+}
+
+.search-page input {
+  width: 40px;
+  height: 32px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  color: white;
+  background-color: #202020;
+  border: none;
+}
+
+.all-platforms {
+  padding: 0 10px;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.one-platform {
+  margin-right: 12px;
+  line-height: 16px;
+}
+
+.one-game-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.one-game-infos h2 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.no-game-found {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #151515;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 20px;
+  margin-bottom: 40px;
+}
+
+.no-game-found p {
+  text-align: center;
+  margin-top: -22px;
+}
+
+.no-game-found img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 10px rgb(26, 72, 42);
+}
+
+#loading {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.all-genres-infos {
+  max-width: 1280px;
+  width: 100%;
+  margin: 20px auto;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.one-genre {
+  width: 90%;
+  height: 280px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-weight: normal;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.one-genre-main-div {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.one-genre-main-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.one-genre-infos {
+  padding: 10px;
+}
+
+.one-genre-infos h2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.one-genre-infos p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.example-games {
+  display: none;
+}
+
+/* ------------------- games genre ------------------ */
+
+.genre-description {
+  position: sticky;
+  top: 240px;
+  background-color: #151515;
+  font-family: "Good Timing";
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.all-genres-infos {
+  gap: 20px;
+}
+
+.all-platforms-page {
+  max-width: 1280px;
+  width: 100%;
+  margin: 20px auto;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.one-platform-page {
+  width: 90%;
+  height: 700px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-weight: normal;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.main-platform-img {
+  width: 100%;
+  height: 160px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.main-platform-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.platform-description {
+  padding: 10px;
+}
+
+.one-platform-page h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.one-platform-page section + p {
+  padding: 0 10px 10px 10px;
+}
+
+.one-platform-page p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.best-games-platform {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.miniature-pic {
+  height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.miniature-pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.best-rated-one-div {
+  width: 48%;
+  overflow: hidden;
+}
+
+.best-rated-one-div a {
+  text-decoration: none;
+}
+
+.best-rated-one-div p {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 6px 0;
+}
+
+.all-stores-page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.all-stores {
+  max-width: 1280px;
+  width: 100%;
+  margin: 20px auto;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.all-stores-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.one-store {
+  width: 90%;
+  height: 700px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-weight: normal;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.one-store > div {
+  width: 100%;
+  height: 160px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.one-store > div img {
+  width: 100%;
+  height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.one-store a {
+  text-decoration: none;
+}
+
+.one-store h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+#store-game-description p {
+  margin-bottom: 10px;
+  height: 20px;
+}
+
+#store-game-description {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 16px;
+  height: 20px;
+}
+
+:root {
+  background-color: #151515;
+  font-family: "Belinsky Text";
+}
+
+header {
+  max-width: 1280px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px;
+  padding-bottom: 0px;
+  background-color: #151515;
+  display: flex;
+  position: sticky;
+  top: 0px;
+}
+
+.title-header {
+  font-size: 38px;
+  color: white;
+  font-weight: bold;
+  height: 80px;
+  width: 220px;
+  font-family: "Good Timing";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  min-height: 100vh;
+  background-color: #151515;
+  display: flex;
+  font-family: "Belinsky Text";
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: aquamarine;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 12px 10px 10px 10px;
+  gap: 8px;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu button {
+  font-family: "Belinsky Text";
+  font-size: 18px;
+  font-weight: bold;
+  color: #151515;
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+#logs {
+  position: sticky;
+  top: 90px;
+  background-color: #151515;
+}
+
+.first-line-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header-img {
+  width: 90px;
+  height: 64px;
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+/* -----------------------   navigation  ----------------------- */
+
+.nav-pages {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #151515;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 160px;
+}
+
+.left-button-class {
+  box-sizing: border-box;
+  width: 150px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left-button-class p {
+  font-family: "Belinsky Text";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.right-button-class {
+  box-sizing: border-box;
+  width: 150px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-button-class p {
+  font-family: "Belinsky Text";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.left-but {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  height: 100px;
+  background-color: #151515;
+  color: rgb(44, 138, 79);
+  padding: 10px;
+}
+
+.right-but {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  height: 100px;
+  background-color: #151515;
+  color: rgb(44, 138, 79);
+  padding: 10px;
+}
+
+.nav-pages img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.first-page-but {
+  height: 30px;
+  background-color: #151515;
+  color: rgb(44, 138, 79);
+  font-weight: bold;
+  text-align: start;
+}
+
+.last-page-but {
+  height: 30px;
+  background-color: #151515;
+  color: rgb(34, 108, 61);
+  font-weight: bold;
+  text-align: end;
+}
+
+/* -----------------------   footer  ----------------------- */
+
+footer {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #151515;
+  height: 60px;
+  position: relative;
+  border: solid rgba(10, 10, 10, 0.71) 6px;
+  box-shadow: 10px 10px 10px 10px rgb(44, 138, 79);
+  box-sizing: border-box;
+}
+
+footer p {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 12px;
+}
+
+footer div {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+footer img {
+  width: 100%;
+  height: 95%;
+  object-fit: cover;
+  object-position: top;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <div id="root"><header><section class="first-line-header"><div class="title-header"><p>GAMEPAD</p></div><div class="header-img"><img src="./stores_files/header-pic.jpeg"></div></section></header><main><section class="content"><nav class="menu"><a href="http://localhost:5173/"><button>HOME</button></a><a href="http://localhost:5173/genres"><button>GENRES</button></a></nav><nav class="menu"><a href="http://localhost:5173/platforms"><button>PLATFORMS</button></a><a href="http://localhost:5173/stores"><button>STORES</button></a></nav><nav class="menu" id="logs"><a href="http://localhost:5173/user/login"><button>LOG IN</button></a><a href="http://localhost:5173/user/signup"><button>SIGN UP</button></a></nav><section class="all-stores"><section class="one-store"><div><img src="./stores_files/7cfc9220b401b7a300e409e539c9afd5.jpg"></div><a href="https://store.steampowered.com/" target="_blank"><h2>Steam</h2></a><div id="store-game-description"><p>Best games on <span>Steam</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3498"><div class="miniature-pic"><img src="./stores_files/20aa03a10cda45239fe22d035c0ebe64.jpg"></div><p>Grand Theft Auto V</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3328"><div class="miniature-pic"><img src="./stores_files/618c2031a07bbff6b4f611f10b6bcdbc.jpg"></div><p>The Witcher 3: Wild Hunt</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4200"><div class="miniature-pic"><img src="./stores_files/2bac0e87cf45e5b508f227d281c9252a.jpg"></div><p>Portal 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4291"><div class="miniature-pic"><img src="./stores_files/73619bd336c894d6941d926bfd563946.jpg"></div><p>Counter-Strike: Global Offensive</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/13536"><div class="miniature-pic"><img src="./stores_files/7fa0b586293c5861ee32490e953a4996.jpg"></div><p>Portal</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/49c3dfa4ce2f6f140cc4825868e858cb.jpg"></div><a href="https://store.playstation.com/" target="_blank"><h2>PlayStation Store</h2></a><div id="store-game-description"><p>Best games on <span>PlayStation Store</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3498"><div class="miniature-pic"><img src="./stores_files/20aa03a10cda45239fe22d035c0ebe64.jpg"></div><p>Grand Theft Auto V</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3328"><div class="miniature-pic"><img src="./stores_files/618c2031a07bbff6b4f611f10b6bcdbc.jpg"></div><p>The Witcher 3: Wild Hunt</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4200"><div class="miniature-pic"><img src="./stores_files/2bac0e87cf45e5b508f227d281c9252a.jpg"></div><p>Portal 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4291"><div class="miniature-pic"><img src="./stores_files/73619bd336c894d6941d926bfd563946.jpg"></div><p>Counter-Strike: Global Offensive</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5679"><div class="miniature-pic"><img src="./stores_files/7cfc9220b401b7a300e409e539c9afd5.jpg"></div><p>The Elder Scrolls V: Skyrim</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/587588c64afbff80e6f444eb2e46f9da.jpg"></div><a href="https://microsoft.com/" target="_blank"><h2>Xbox Store</h2></a><div id="store-game-description"><p>Best games on <span>Xbox Store</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3498"><div class="miniature-pic"><img src="./stores_files/20aa03a10cda45239fe22d035c0ebe64.jpg"></div><p>Grand Theft Auto V</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3328"><div class="miniature-pic"><img src="./stores_files/618c2031a07bbff6b4f611f10b6bcdbc.jpg"></div><p>The Witcher 3: Wild Hunt</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4200"><div class="miniature-pic"><img src="./stores_files/2bac0e87cf45e5b508f227d281c9252a.jpg"></div><p>Portal 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/28"><div class="miniature-pic"><img src="./stores_files/5118aff5091cb3efec399c808f8c598f.jpg"></div><p>Red Dead Redemption 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4062"><div class="miniature-pic"><img src="./stores_files/fc1307a2774506b5bd65d7e8424664a7.jpg"></div><p>BioShock Infinite</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3439"><div class="miniature-pic"><img src="./stores_files/562553814dd54e001a541e4ee83a591c.jpg"></div><p>Life is Strange</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/15742f2f67eacff546738e1ab5c19d20.jpg"></div><a href="https://apps.apple.com/" target="_blank"><h2>App Store</h2></a><div id="store-game-description"><p>Best games on <span>App Store</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4062"><div class="miniature-pic"><img src="./stores_files/fc1307a2774506b5bd65d7e8424664a7.jpg"></div><p>BioShock Infinite</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3439"><div class="miniature-pic"><img src="./stores_files/562553814dd54e001a541e4ee83a591c.jpg"></div><p>Life is Strange</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/802"><div class="miniature-pic"><img src="./stores_files/49c3dfa4ce2f6f140cc4825868e858cb.jpg"></div><p>Borderlands 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4286"><div class="miniature-pic"><img src="./stores_files/bc06a29ceac58652b684deefe7d56099.jpg"></div><p>BioShock</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1030"><div class="miniature-pic"><img src="./stores_files/9424d6bb763dc38d9378b488603c87fa.jpg"></div><p>Limbo</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/b4912b5dbfc7ed8927b65f05b8507f6c.jpg"></div><a href="https://gog.com/" target="_blank"><h2>GOG</h2></a><div id="store-game-description"><p>Best games on <span>GOG</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3328"><div class="miniature-pic"><img src="./stores_files/618c2031a07bbff6b4f611f10b6bcdbc.jpg"></div><p>The Witcher 3: Wild Hunt</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3439"><div class="miniature-pic"><img src="./stores_files/562553814dd54e001a541e4ee83a591c.jpg"></div><p>Life is Strange</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/58175"><div class="miniature-pic"><img src="./stores_files/4be6a6ad0364751a96229c56bf69be59.jpg"></div><p>God of War (2018)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1030"><div class="miniature-pic"><img src="./stores_files/9424d6bb763dc38d9378b488603c87fa.jpg"></div><p>Limbo</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/41494"><div class="miniature-pic"><img src="./stores_files/26d4437715bee60138dab4a7c8c59c92.jpg"></div><p>Cyberpunk 2077</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/422"><div class="miniature-pic"><img src="./stores_files/f466571d536f2e3ea9e815ad17177501.jpg"></div><p>Terraria</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/f9979698c43fd84c3ab69280576dd3af.jpg"></div><a href="https://nintendo.com/" target="_blank"><h2>Nintendo Store</h2></a><div id="store-game-description"><p>Best games on <span>Nintendo Store</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3328"><div class="miniature-pic"><img src="./stores_files/618c2031a07bbff6b4f611f10b6bcdbc.jpg"></div><p>The Witcher 3: Wild Hunt</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5679"><div class="miniature-pic"><img src="./stores_files/7cfc9220b401b7a300e409e539c9afd5.jpg"></div><p>The Elder Scrolls V: Skyrim</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4062"><div class="miniature-pic"><img src="./stores_files/fc1307a2774506b5bd65d7e8424664a7.jpg"></div><p>BioShock Infinite</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1030"><div class="miniature-pic"><img src="./stores_files/9424d6bb763dc38d9378b488603c87fa.jpg"></div><p>Limbo</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3939"><div class="miniature-pic"><img src="./stores_files/73eecb8909e0c39fb246f457b5d6cbbe.jpg"></div><p>PAYDAY 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/2454"><div class="miniature-pic"><img src="./stores_files/587588c64afbff80e6f444eb2e46f9da.jpg"></div><p>DOOM (2016)</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/4e6e8e7f50c237d76f38f3c885dae3d2.jpg"></div><a href="https://marketplace.xbox.com/" target="_blank"><h2>Xbox 360 Store</h2></a><div id="store-game-description"><p>Best games on <span>Xbox 360 Store</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3498"><div class="miniature-pic"><img src="./stores_files/20aa03a10cda45239fe22d035c0ebe64.jpg"></div><p>Grand Theft Auto V</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4200"><div class="miniature-pic"><img src="./stores_files/2bac0e87cf45e5b508f227d281c9252a.jpg"></div><p>Portal 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4291"><div class="miniature-pic"><img src="./stores_files/73619bd336c894d6941d926bfd563946.jpg"></div><p>Counter-Strike: Global Offensive</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/12020"><div class="miniature-pic"><img src="./stores_files/d588947d4286e7b5e0e12e1bea7d9844.jpg"></div><p>Left 4 Dead 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5679"><div class="miniature-pic"><img src="./stores_files/7cfc9220b401b7a300e409e539c9afd5.jpg"></div><p>The Elder Scrolls V: Skyrim</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/7fa0b586293c5861ee32490e953a4996.jpg"></div><a href="https://play.google.com/" target="_blank"><h2>Google Play</h2></a><div id="store-game-description"><p>Best games on <span>Google Play</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/13536"><div class="miniature-pic"><img src="./stores_files/7fa0b586293c5861ee32490e953a4996.jpg"></div><p>Portal</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3439"><div class="miniature-pic"><img src="./stores_files/562553814dd54e001a541e4ee83a591c.jpg"></div><p>Life is Strange</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/802"><div class="miniature-pic"><img src="./stores_files/49c3dfa4ce2f6f140cc4825868e858cb.jpg"></div><p>Borderlands 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/13537"><div class="miniature-pic"><img src="./stores_files/b8c243eaa0fbac8115e0cdccac3f91dc.jpg"></div><p>Half-Life 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1030"><div class="miniature-pic"><img src="./stores_files/9424d6bb763dc38d9378b488603c87fa.jpg"></div><p>Limbo</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/d1f872a48286b6b751670817d5c1e1be.jpg"></div><a href="https://itch.io/" target="_blank"><h2>itch.io</h2></a><div id="store-game-description"><p>Best games on <span>itch.io</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/613"><div class="miniature-pic"><img src="./stores_files/f9979698c43fd84c3ab69280576dd3af.jpg"></div><p>Bastion</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5525"><div class="miniature-pic"><img src="./stores_files/af7a831001c5c32c46e950cc883b8cb7.jpg"></div><p>Brutal Legend</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1010"><div class="miniature-pic"><img src="./stores_files/d1f872a48286b6b751670817d5c1e1be.jpg"></div><p>Transistor</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/356714"><div class="miniature-pic"><img src="./stores_files/e74458058b35e01c1ae3feeb39a3f724.jpg"></div><p>Among Us</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/1358"><div class="miniature-pic"><img src="./stores_files/6d33014a4ed48a19c30a77ead5a0f62e.jpg"></div><p>Papers, Please</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/3740"><div class="miniature-pic"><img src="./stores_files/4cb855e8ef1578415a928e53c9f51867.png"></div><p>FEZ</p></a></section></section></section><section class="one-store"><div><img src="./stores_files/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg"></div><a href="https://epicgames.com/" target="_blank"><h2>Epic Games</h2></a><div id="store-game-description"><p>Best games on <span>Epic Games</span> </p></div><section class="all-stores-page"><section class="best-rated-one-div"><a href="http://localhost:5173/game/3498"><div class="miniature-pic"><img src="./stores_files/20aa03a10cda45239fe22d035c0ebe64.jpg"></div><p>Grand Theft Auto V</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/5286"><div class="miniature-pic"><img src="./stores_files/021c4e21a1824d2526f925eff6324653.jpg"></div><p>Tomb Raider (2013)</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/28"><div class="miniature-pic"><img src="./stores_files/5118aff5091cb3efec399c808f8c598f.jpg"></div><p>Red Dead Redemption 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/4062"><div class="miniature-pic"><img src="./stores_files/fc1307a2774506b5bd65d7e8424664a7.jpg"></div><p>BioShock Infinite</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/32"><div class="miniature-pic"><img src="./stores_files/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg"></div><p>Destiny 2</p></a></section><section class="best-rated-one-div"><a href="http://localhost:5173/game/58175"><div class="miniature-pic"><img src="./stores_files/4be6a6ad0364751a96229c56bf69be59.jpg"></div><p>God of War (2018)</p></a></section></section></section></section></section><footer><p>Made with RAWG API, by Solene</p><div><img src="./stores_files/footerpic.webp"></div></footer></main></div>
+    <script type="module" src="./stores_files/main.jsx"></script>
+  
+
+</body></html>

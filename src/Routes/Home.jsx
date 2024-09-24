@@ -13,8 +13,7 @@ import { BsExclamationTriangle } from "react-icons/bs";
 import notFound from "../pictures/not-found.jpg";
 import loading from "../pictures/loading.jpg";
 
-const Home = ({ token, id, logoutFunc }) => {
-  const [search, setSearch] = useState("");
+const Home = ({ token, id, logoutFunc, search, setSearch }) => {
   const [ordering, setOrdering] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -48,21 +47,26 @@ const Home = ({ token, id, logoutFunc }) => {
         );
         setData(response.data.results);
         setCount(response.data.count);
-        if (count % pageSize === 0) {
-          /*setLastPage(count / pageSize)*/
-          if (count / pageSize < 250) {
-            setLastPage(count / pageSize);
-          } else {
-            setLastPage(250);
-          }
+        if (count === 0) {
+          setLastPage(1);
         } else {
-          if (count / pageSize + 1 < 250) {
-            setLastPage(Math.trunc(count / pageSize) + 1);
+          if (count % pageSize === 0) {
+            /*setLastPage(count / pageSize)*/
+            if (count / pageSize < 250) {
+              setLastPage(count / pageSize);
+            } else {
+              setLastPage(250);
+            }
           } else {
-            setLastPage(250);
+            if (count / pageSize + 1 < 250) {
+              setLastPage(Math.trunc(count / pageSize) + 1);
+            } else {
+              setLastPage(250);
+            }
+            /*setLastPage(Math.trunc(count / pageSize + 1));*/
           }
-          /*setLastPage(Math.trunc(count / pageSize + 1));*/
         }
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -79,6 +83,7 @@ const Home = ({ token, id, logoutFunc }) => {
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content" id="loading-content">
             <MainBanner
+              search={search}
               setSearch={setSearch}
               setOrdering={setOrdering}
               count={count}
@@ -90,7 +95,7 @@ const Home = ({ token, id, logoutFunc }) => {
             <section className="all-games">
               <section className="no-game-found">
                 <img src={loading} />
-                <p>Hmmm ... wait for it...</p>
+                <p>...wait for it...</p>
               </section>
             </section>
             <Footer />
@@ -109,12 +114,12 @@ const Home = ({ token, id, logoutFunc }) => {
           ------------------------------------------------------------------------------------------------- */}
           <section className="content">
             <MainBanner
-              setSearch={setSearch}
               setOrdering={setOrdering}
               count={count}
               page={page}
               setPage={setPage}
               lastPage={lastPage}
+              isLoading={isLoading}
             />
             {/* -------------------------------- RECUPERATION DU CONTENU -------------------------------- */}
             <section className="all-games">
@@ -252,7 +257,7 @@ const Home = ({ token, id, logoutFunc }) => {
                 <section className="all-games">
                   <section className="no-game-found">
                     <img src={notFound} />
-                    <p>Hmmm ... found nothing here</p>
+                    <p>...found nothing here</p>
                   </section>
                 </section>
               )}

@@ -15,6 +15,7 @@ import Login from "./Routes/Login";
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [id, setId] = useState(Cookies.get("id") || null);
+  const [search, setSearch] = useState("");
 
   /* --------- Ma fonction qui gère le token et le 🍪 -------- */
 
@@ -49,7 +50,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home token={token} id={id} logoutFunc={logoutFunc} />}
+            element={
+              <Home
+                token={token}
+                id={id}
+                logoutFunc={logoutFunc}
+                search={search}
+                setSearch={setSearch}
+              />
+            }
           />
           <Route
             path="/game/:id"
@@ -70,7 +79,13 @@ function App() {
           <Route
             path="/games/:genres"
             element={
-              <GamesGenre token={token} id={id} logoutFunc={logoutFunc} />
+              <GamesGenre
+                token={token}
+                id={id}
+                logoutFunc={logoutFunc}
+                search={search}
+                setSearch={setSearch}
+              />
             }
           />
           <Route

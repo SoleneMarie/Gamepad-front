@@ -59,31 +59,31 @@ const Platforms = ({ token, id, logoutFunc }) => {
           <main>
             <section className="content">
               <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-              <section className="all-platforms">
+              <section className="all-platforms-page">
                 {data.map((item) => {
                   return (
-                    <section className="one-platform" key={item.id}>
-                      <div>
+                    <section className="one-platform-page" key={item.id}>
+                      <div className="main-platform-img">
                         <img src={item.image_background} />
                       </div>
-                      <h2>{item.name}</h2>
+                      <section className="platform-description">
+                        <h2>{item.name}</h2>
+                      </section>
                       <p>
-                        There are <span>{item.games_count}</span> available
-                        games on {item.name}
+                        Best games on <span>{item.name}</span> :{" "}
                       </p>
-                      <p>
-                        Best rated games on <span>{item.name}</span> :{" "}
-                      </p>
-                      {item.games &&
-                        item.games.map((itemBis) => {
-                          return (
-                            <GetPicsById
-                              name={itemBis.name}
-                              id={itemBis.id}
-                              key={itemBis.id}
-                            />
-                          );
-                        })}
+                      <div className="best-games-platform">
+                        {item.games &&
+                          item.games.map((itemBis) => {
+                            return (
+                              <GetPicsById
+                                name={itemBis.name}
+                                id={itemBis.id}
+                                key={itemBis.id}
+                              />
+                            );
+                          })}
+                      </div>
                     </section>
                   );
                 })}

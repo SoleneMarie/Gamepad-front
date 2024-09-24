@@ -1,0 +1,166 @@
+.all-details-one-game {
+  max-width: 1280px;
+  width: 100%;
+  background-color: #151515;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.all-details-one-game h1 {
+  font-family: "Good Timing";
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.one-game-big-pic {
+  width: 95%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.one-game-big-pic img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.one-game-all-infos {
+  padding: 12px;
+  margin-bottom: 14px;
+  background-color: #202020;
+  border-radius: 10px;
+}
+
+.infos-game-genres {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.infos-game-genres a {
+  text-decoration: none;
+  color: white;
+}
+.one-game-genres {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+  margin-right: 12px;
+  font-weight: bold;
+  color: rgb(140, 147, 155);
+}
+
+.one-game-all-infos p {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 16px -6px;
+}
+
+.one-game-released {
+  color: rgb(140, 147, 155);
+}
+
+.platforms-rating {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  margin-top: -10px;
+  color: rgb(44, 138, 79);
+}
+.platforms-rating div {
+  margin-right: 10px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.platforms-rating p {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ----------------------  Similar games --------------------- */
+
+.similar-games {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #202020;
+  margin: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.similar-games h2 {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.similar-games h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 6px 0;
+}
+.similar-games div {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 10px;
+}
+.similar-games div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.oneGame {
+  width: 48%;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ----------------------  Carousel  --------------------- */
+
+.carousel {
+  padding: 10px;
+  background-color: #202020;
+  margin: 10px;
+  border-radius: 10px;
+}
+.all-screens {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  gap: 10px;
+}
+
+.carousel h2 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 22px;
+}
+.one-screenshot {
+  width: 200px;
+  height: 140px;
+  flex-shrink: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.one-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

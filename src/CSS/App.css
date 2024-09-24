@@ -1,6 +1,9 @@
 @import "./fonts/stylesheet.css";
 @import "./Home.css";
 @import "./Genres.css";
+@import "./Platforms.css";
+@import "./Stores.css";
+@import "./OneGame.css";
 
 :root {
   background-color: #151515;
@@ -36,7 +39,6 @@ main {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 10px;
   min-height: 100vh;
   background-color: #151515;
   display: flex;
@@ -106,7 +108,7 @@ header img {
 
 .nav-pages {
   max-width: 1280px;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   padding: 0 10px;
   background-color: #151515;
@@ -196,9 +198,8 @@ footer {
   width: 100%;
   margin: 0 auto;
   background-color: #151515;
-  height: 80px;
+  height: 60px;
   position: relative;
-  border: solid rgba(10, 10, 10, 0.71) 6px;
   box-shadow: 10px 10px 10px 10px rgb(44, 138, 79);
   box-sizing: border-box;
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 const MainBanner = ({
+  search,
   setSearch,
   setOrdering,
   count,
@@ -9,6 +10,7 @@ const MainBanner = ({
   isLoading,
 }) => {
   console.log("last page : ", lastPage);
+  console.log("search, ", search);
   const [pageError, setPageError] = useState(false);
 
   {
@@ -47,58 +49,60 @@ const MainBanner = ({
     return (
       <>
         <section className="sticky-header">
-          <h1>Find and rate your favorite games</h1>
+          <h1>Find your favorite games</h1>
 
           <input
             type="text"
             id="search-game"
             name="search-game"
-            placeholder={`search ${count} games`}
+            placeholder={`${search}?  search ${count} games`}
             onChange={(event) => {
               event.preventDefault();
               setDelaySearch(event.target.value, 2000);
             }}
           />
         </section>
-        <div className="sort">
-          <label htmlFor="choices">Sort by...</label>
-          <select
-            name="choices"
-            id="choices"
-            onChange={(event) => {
-              setOrdering(event.target.value);
-            }}
-          >
-            <option value="added">date added </option>
-            <option value="name">name</option>
-            <option value="rating">best rated</option>
-            <option value="released">last released</option>
-          </select>
-        </div>
-        <div className="search-page">
-          <label>Page</label>
-          <input
-            type="text"
-            id="page-number"
-            placeholder={page}
-            onChange={(event) => {
-              event.preventDefault();
-              if (
-                Number(event.target.value) <= lastPage &&
-                Number(event.target.value > 0)
-              )
-                setPage(Number(event.target.value));
-              setDelaySearchPage(event.target.value, 1500);
-            }}
-          />
-          {pageError && <p>Please enter a valid page (max : {lastPage})</p>}
-        </div>
+        <section className="sort-page">
+          <div className="sort">
+            <label htmlFor="choices">Sort by...</label>
+            <select
+              name="choices"
+              id="choices"
+              onChange={(event) => {
+                setOrdering(event.target.value);
+              }}
+            >
+              <option value="added">date added </option>
+              <option value="name">name</option>
+              <option value="rating">best rated</option>
+              <option value="released">last released</option>
+            </select>
+          </div>
+          <div className="search-page">
+            <label>Page</label>
+            <input
+              type="text"
+              id="page-number"
+              placeholder={page}
+              onChange={(event) => {
+                event.preventDefault();
+                if (
+                  Number(event.target.value) <= lastPage &&
+                  Number(event.target.value > 0)
+                )
+                  setPage(Number(event.target.value));
+                setDelaySearchPage(event.target.value, 1500);
+              }}
+            />
+            {pageError && <p>Please enter a valid page (max : {lastPage})</p>}
+          </div>
+        </section>
       </>
     );
   } else if (isLoading) {
     return (
       <section className="sticky-header">
-        <h1>Find and rate your favorite games</h1>
+        <h1>Find your favorite games</h1>
       </section>
     );
   } else {
