@@ -32,9 +32,9 @@ const Stores = ({ token, id }) => {
         <section className="content">
           <LeftMenu token={token} id={id} />
           <p>Loading...</p>
-          <Footer />
         </section>
       </main>
+      <Footer />
     </>;
   } else {
   }
@@ -43,8 +43,8 @@ const Stores = ({ token, id }) => {
     <>
       <Header />
       <main>
+        <LeftMenu token={token} id={id} />
         <section className="content">
-          <LeftMenu token={token} id={id} />
           <section className="all-stores">
             {data &&
               data.map((item) => {
@@ -78,8 +78,8 @@ const Stores = ({ token, id }) => {
               })}
           </section>
         </section>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

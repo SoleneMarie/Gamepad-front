@@ -5,6 +5,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 import LoadFavourites from "../Components/LoadFavourites";
+import notAutho from "../pictures/not-autho.webp";
 
 const Profile = ({ token, logoutFunc }) => {
   const [data, setData] = useState({});
@@ -38,36 +39,35 @@ const Profile = ({ token, logoutFunc }) => {
         <>
           <Header />
           <main>
-            <section className="content">
+            <section className="all-menu">
               <LeftMenu token={token} logoutFunc={logoutFunc} />
-              <section className="profile">
-                <section className="profile-infos">
+            </section>
+            <section className="profile">
+              <section className="profile-infos">
+                <div className="profile-details">
                   <div className="profile-pic">
                     <img src={data.picture} />
                   </div>
-                  <div className="profile-details">
-                    <h2>{data.username}</h2>
-                    <h3> My mail </h3>
-                    <p> {data.email}</p>
-                    <h3>My password</h3>
-                    <button> Click to change password </button>
-                  </div>
-                </section>
-                <section className="profile-favourites">
-                  <h2> My favourite games </h2>
-                  <div className="profile-favourite-games">
-                    {data.favourites &&
-                      data.favourites.map((item) => {
-                        console.log(item);
-                        return <LoadFavourites id={item} />;
-                      })}
-                  </div>
-                </section>
+                  <h2>{data.username}</h2>
+                  <h3> My mail </h3>
+                  <p> {data.email}</p>
+                  <h3>My password</h3>
+                  <button> Click to change password </button>
+                </div>
               </section>
-
-              <Footer />
+              <section className="profile-favourites">
+                <h2> My favourite games </h2>
+                <div className="profile-favourite-games">
+                  {data.favourites &&
+                    data.favourites.map((item) => {
+                      console.log(item);
+                      return <LoadFavourites id={item} />;
+                    })}
+                </div>
+              </section>
             </section>
-          </main>
+          </main>{" "}
+          <Footer />
         </>
       </>
     );
@@ -76,12 +76,19 @@ const Profile = ({ token, logoutFunc }) => {
       <>
         <Header />
         <main>
-          <section className="content">
+          <section className="all-menu">
             <LeftMenu />
-            <p>Not authorized</p>
-            <Footer />
+          </section>
+          <section className="content">
+            <section className="not-found">
+              <div className="no-game-found">
+                <img src={notAutho} />
+                <p>Not authorized...</p>
+              </div>
+            </section>
           </section>
         </main>
+        <Footer />
       </>
     );
   } else {
@@ -92,9 +99,9 @@ const Profile = ({ token, logoutFunc }) => {
           <section className="content">
             <LeftMenu token={token} logoutFunc={logoutFunc} />
             <p>Loading...</p>
-            <Footer />
           </section>
         </main>
+        <Footer />
       </>
     );
   }

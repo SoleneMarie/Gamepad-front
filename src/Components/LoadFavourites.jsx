@@ -25,17 +25,19 @@ const LoadFavourites = ({ id }) => {
   if (!isLoading) {
     return (
       <>
-        <section className="one-game">
-          <div>
+        <section className="one-favourite-game">
+          <div className="fav-img">
             {data.background_image ? (
               <img src={data.background_image} />
             ) : (
               <img src={placeHolder} />
             )}
           </div>
-          <h2>{data.name}</h2>
-          <CleanText data={data} />
-          <section className="platforms-rating">
+          <h3>{data.name}</h3>
+          <div className="overflow">
+            <CleanText data={data} />
+          </div>
+          <section className="platforms-rating-fav">
             {data.platform &&
               data.platforms.map((item) => {
                 return <p key={item.platform.id}>{item.platform.name}</p>;

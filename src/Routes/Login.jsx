@@ -2,9 +2,11 @@ import { useState } from "react";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Login = ({ cookieFunc }) => {
   const [username, setUsername] = useState("");
@@ -13,6 +15,7 @@ const Login = ({ cookieFunc }) => {
   const [emptyError, setEmptyError] = useState(false);
   const [userError, setUserError] = useState(false);
   const [passError, setPassError] = useState(false);
+  const [passType, setPassType] = useState("password");
   const navigate = useNavigate();
   const idData = {
     username: username,
@@ -92,16 +95,33 @@ const Login = ({ cookieFunc }) => {
             </div>
             <div className="one-form-field">
               <h3>Password</h3>
-              <input
-                type="text"
-                id="password"
-                name="password"
-                placeholder="ex : je4(tuao34j-H"
-                onChange={(event) => {
-                  event.preventDefault;
-                  setPassword(event.target.value);
-                }}
-              />
+              <div className="passfield">
+                <input
+                  type={passType}
+                  id="password"
+                  name="password"
+                  placeholder="ex : je4(tuao34j-H"
+                  onChange={(event) => {
+                    event.preventDefault;
+                    setPassword(event.target.value);
+                  }}
+                />
+                {passType === "password" ? (
+                  <div
+                    className="pass-icon"
+                    onClick={() => setPassType("text")}
+                  >
+                    <FaEyeSlash />
+                  </div>
+                ) : (
+                  <div
+                    className="pass-icon"
+                    onClick={() => setPassType("password")}
+                  >
+                    <FaEye />
+                  </div>
+                )}
+              </div>
             </div>
             <button>Log in</button>
           </form>
@@ -123,6 +143,7 @@ const Login = ({ cookieFunc }) => {
           </div>
           <p>
             Don't have an account yet?
+            <br />
             <Link to="/user/signup">
               <span>Sign up</span>
             </Link>

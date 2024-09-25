@@ -27,23 +27,25 @@ const SimilarGames = ({ id }) => {
     return (
       <>
         <h2> Discover similar games </h2>
-        {data.results &&
-          data.results.map((item) => {
-            return (
-              <section className="oneGame" key={item.id}>
-                <Link to={`/game/${item.id}`} target="blank">
-                  <div>
-                    {item.background_image ? (
-                      <img src={item.background_image} />
-                    ) : (
-                      <img src={placeHolder} />
-                    )}
-                  </div>
-                </Link>
-                <h3>{item.name}</h3>
-              </section>
-            );
-          })}
+        <section className="all-similar-games">
+          {data.results &&
+            data.results.map((item) => {
+              return (
+                <section className="oneGame" key={item.id}>
+                  <Link to={`/game/${item.id}`} target="blank">
+                    <div>
+                      {item.background_image ? (
+                        <img src={item.background_image} />
+                      ) : (
+                        <img src={placeHolder} />
+                      )}
+                    </div>
+                  </Link>
+                  <h3>{item.name}</h3>
+                </section>
+              );
+            })}
+        </section>
       </>
     );
   }

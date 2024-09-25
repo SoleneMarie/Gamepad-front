@@ -49,8 +49,6 @@ const MainBanner = ({
     return (
       <>
         <section className="sticky-header">
-          <h1>Find your favorite games</h1>
-
           <input
             type="text"
             id="search-game"

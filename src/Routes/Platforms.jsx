@@ -45,9 +45,9 @@ const Platforms = ({ token, id, logoutFunc }) => {
           <section className="content">
             <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
             <p>Loading...</p>
-            <Footer />
           </section>
         </main>
+        <Footer />
       </>
     );
   } else {
@@ -57,8 +57,10 @@ const Platforms = ({ token, id, logoutFunc }) => {
         <>
           <Header />
           <main>
-            <section className="content">
+            <section className="left-menu">
               <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
+            </section>
+            <section className="content">
               <section className="all-platforms-page">
                 {data.map((item) => {
                   return (

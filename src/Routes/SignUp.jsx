@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import Footer from "./Components/Footer";
-import LeftMenu from "./Components/LeftMenu";
-import Header from "./Components/Header";
+import Footer from "../Components/Footer";
+import LeftMenu from "../Components/LeftMenu";
+import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AiFillPicture } from "react-icons/ai";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const SignUp = ({ cookieFunc }) => {
   const [username, setUsername] = useState("");
@@ -21,9 +24,8 @@ const SignUp = ({ cookieFunc }) => {
   const [emptyError, setEmptyError] = useState(false);
   const [conflictUser, setConflictUser] = useState(false);
   const [conflictMail, setConflictMail] = useState(false);
+  const [passType, setPassType] = useState("password");
   const navigate = useNavigate();
-
-  console.log(picture);
 
   /* ------------ Ma fonction quand je soumet le formulaire ------------ */
   const submitFunc = async (event) => {
@@ -105,7 +107,7 @@ const SignUp = ({ cookieFunc }) => {
         <LeftMenu />
         <section className="sign-up">
           <h1>Your character sheet </h1>
-          <section className="form">
+          <section className="sign-form">
             <form onSubmit={submitFunc}>
               <div className="one-form-field">
                 <h3>Choose your username</h3>
@@ -126,45 +128,83 @@ const SignUp = ({ cookieFunc }) => {
                   id="email"
                   name="email"
                   placeholder="ex : tom@game.com"
-                  onChange={(event) => {
+                  onClick={(event) => {
                     setEmail(event.target.value);
                   }}
                 />
               </div>
               <div className="one-form-field">
-                <h3>Choose a gorgeous picture</h3>
+                <h3>Your gorgeous picture</h3>
+                <label className="file-button" htmlFor="picture">
+                  <AiFillPicture />
+                </label>
                 <input
                   type="file"
                   id="picture"
                   name="picture"
                   onChange={(event) => setPicture(event.target.files[0])}
                 />
+                {picture && <p>Fichier sélectionné : {picture.name}</p>}
               </div>
               <div className="one-form-field">
-                <h3>Nobody looking? Write your password</h3>
-                <input
-                  type="text"
-                  id="password"
-                  name="password"
-                  placeholder="ex : je4(tuao34j-H"
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                />
+                <h3>Write your password</h3>
+                <div className="passfield">
+                  <input
+                    type={passType}
+                    id="password"
+                    name="password"
+                    placeholder="ex : je4(tuao34j-H"
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
+                  />
+                  {passType === "password" ? (
+                    <div
+                      className="pass-icon"
+                      onClick={() => setPassType("text")}
+                    >
+                      <FaEyeSlash />
+                    </div>
+                  ) : (
+                    <div
+                      className="pass-icon"
+                      onClick={() => setPassType("password")}
+                    >
+                      <FaEye />
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="one-form-field">
                 <h3>Same old same password</h3>
-                <input
-                  type="text"
-                  id="password-confirm"
-                  name="password-confirm"
-                  placeholder="ex : je4(tuao34j-H"
-                  onChange={(event) => {
-                    setConfirmPassword(event.target.value);
-                  }}
-                />
+                <div className="passfield">
+                  <input
+                    type={passType}
+                    id="password-confirm"
+                    name="password-confirm"
+                    placeholder="ex : je4(tuao34j-H"
+                    onChange={(event) => {
+                      setConfirmPassword(event.target.value);
+                    }}
+                  />
+                  {passType === "password" ? (
+                    <div
+                      className="pass-icon"
+                      onClick={() => setPassType("text")}
+                    >
+                      <FaEyeSlash />
+                    </div>
+                  ) : (
+                    <div
+                      className="pass-icon"
+                      onClick={() => setPassType("password")}
+                    >
+                      <FaEye />
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="one-form-field">
+              <div id="adult-class" className="one-form-field">
                 <h3>Are you an adult?</h3>
                 <input
                   type="checkbox"
@@ -213,9 +253,9 @@ const SignUp = ({ cookieFunc }) => {
               )}
             </div>
             <p>
-              Already have an account?{" "}
+              Already have an account? <br />
               <Link to="/user/login">
-                <span>Login</span>
+                <span>Log in</span>
               </Link>
             </p>
           </section>

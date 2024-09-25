@@ -1,36 +1,3 @@
-.content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-}
-.all-games {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-.one-game {
-  width: 90%;
-  height: 340px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  font-weight: normal;
-  background-color: #202020;
-  border-radius: 10px;
-}
-.one-game-pic {
-  width: 100%;
-  height: 65%;
-  padding: 10px 10px 0 10px;
-  box-sizing: border-box;
-}
-
 .one-game-pic img {
   width: 100%;
   height: 100%;
@@ -97,27 +64,6 @@ main {
   font-size: 16px;
 }
 
-.sticky-header {
-  position: sticky;
-  top: 150px;
-  height: 100px;
-  background-color: #151515;
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.sort-page {
-  width: 90%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-}
-.sort {
-  margin-bottom: 20px;
-}
 .sort label {
   margin-right: 20px;
 }
@@ -127,13 +73,6 @@ main {
   border-radius: 6px;
   height: 40px;
   font-size: 16px;
-}
-
-.search-page {
-  width: 90%;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
 }
 
 .search-page label {
@@ -167,48 +106,332 @@ main {
 .one-game-infos {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   flex: 1;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .one-game-infos h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 30px;
-  overflow: hidden;
-  padding: 0 10px;
-}
 
-.no-game-found {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
   padding: 0 10px;
-  background-color: #151515;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  margin: 20px;
-  margin-bottom: 40px;
 }
 
 .no-game-found p {
   text-align: center;
-  margin-top: -18px;
-}
-
-.no-game-found img {
-  width: 100%;
-  border-radius: 10px;
-  height: 300px;
-  box-shadow: 0px 0px 10px 10px rgb(26, 72, 42);
-  object-position: bottom;
-  object-fit: cover;
+  margin-top: -24px;
 }
 
 #loading {
   margin-top: 0;
   margin-bottom: 20px;
+}
+
+.green {
+  height: 26px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(25, 102, 69);
+}
+
+.red {
+  height: 26px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(207, 50, 50);
+}
+
+.green button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: "Belinsky Text";
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.red button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: "Belinsky Text";
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .one-game {
+    width: 90%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    background-color: #202020;
+    border-radius: 10px;
+  }
+  .one-game-pic {
+    width: 100%;
+    height: 65%;
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+  }
+  .sticky-header {
+    position: sticky;
+    top: 160px;
+    height: 60px;
+    background-color: #151515;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+  }
+  .sort-page {
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .sort {
+    margin-bottom: 20px;
+  }
+  .search-page {
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+  .all-games {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .no-game-found {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 20px;
+    margin-bottom: 40px;
+  }
+  .not-found {
+    width: 92%;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 900px) {
+  .one-game {
+    width: 90%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    background-color: #202020;
+    border-radius: 10px;
+  }
+  .one-game-pic {
+    width: 100%;
+    height: 75%;
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+  }
+  .sticky-header {
+    position: sticky;
+    top: 122px;
+    height: 60px;
+    background-color: #151515;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+    width: 90%;
+    align-self: center;
+  }
+  .sort-page {
+    width: 85%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: sticky;
+    top: 192px;
+    gap: 40px;
+    background-color: #151515;
+    padding-bottom: 20px;
+    padding-left: 30px;
+  }
+
+  .sort {
+    display: flex;
+    align-items: center;
+  }
+  .sort label {
+    width: 110px;
+    margin: 0;
+  }
+  .search-page {
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  .search-page label {
+    margin: 12px;
+  }
+  .all-games {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .no-game-found {
+    max-width: 1280px;
+    width: 90%;
+    padding: 0 10px;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+  }
+  .not-found {
+    padding-left: 60px;
+    align-self: center;
+    padding-top: 40px;
+  }
+  .no-game-found img {
+    width: 100%;
+    height: 100%;
+  }
+  .wrong-way-img {
+    width: 70%;
+  }
+}
+@media (min-width: 900px) {
+  .one-game {
+    width: 30%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    background-color: #202020;
+    border-radius: 10px;
+  }
+  .one-game-pic {
+    width: 100%;
+    height: 75%;
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+  }
+  .sticky-header {
+    position: sticky;
+    top: 162px;
+    height: 60px;
+    background-color: #151515;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+    width: 98%;
+    align-self: center;
+  }
+  .sort-page {
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: sticky;
+    top: 232px;
+    gap: 40px;
+    background-color: #151515;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .sort {
+    display: flex;
+    align-items: center;
+  }
+  .sort label {
+    width: 110px;
+    margin: 0;
+  }
+  .search-page {
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  .search-page label {
+    margin: 12px;
+  }
+  .all-games {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-left: 40px;
+  }
+  .not-found {
+    height: 800px;
+    padding-left: 60px;
+    align-self: center;
+    padding-top: 40px;
+  }
+  .no-game-found img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .no-game-found {
+    max-width: 1280px;
+    height: 800px;
+    width: 100%;
+    padding: 0 10px;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-bottom: 60px;
+  }
+  #wrong-way-img {
+    width: 95%;
+  }
 }

@@ -131,7 +131,9 @@ const GameGenre = ({ token, id, logoutFunc }) => {
             ) : (
               <>
                 <section className="genre-description">
-                  <h1>{dataGenre.name} games</h1>
+                  <h1 className="genre-desc-title-main">
+                    {dataGenre.name} games
+                  </h1>
                 </section>
                 <section className="all-genres-infos">
                   {data.length > 0 &&

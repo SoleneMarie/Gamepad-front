@@ -9,6 +9,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 import SimilarGames from "../Components/SimilarGames";
+import { FaPlus } from "react-icons/fa";
 
 const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
@@ -17,6 +18,32 @@ const OneGame = ({ token, id, logoutFunc }) => {
   const [dataScreens, setDataScreens] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   const [isLoadingScreens, setIsLoadingScreens] = useState(false);
+  const [buttonClass, setButtonClass] = useState("green");
+  const [buttonText, setButtonText] = useState("Add");
+  const [idGame, setIdGame] = useState("");
+
+  /* ---------------- Ma fonction pour gérer les favoris ---------------- */
+
+  const favoriteFunc = async (id, idGame) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/user/favorites/${id}`,
+        { favorites: idGame }
+      );
+      console.log(response.data);
+      if (response.data.message === "added to your favorites") {
+        setButtonClass("red");
+        setButtonText("Remove");
+      } else {
+        setButtonClass("green");
+        setButtonText("Add");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  /* ------------------------------------------------------------------- */
 
   useEffect(() => {
     const getGame = async () => {
@@ -26,6 +53,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
           `http://localhost:3000/game/${idgame}`
         );
         setData(response.data);
+        setIdGame(response.data.id);
 
         setisLoading(false);
       } catch (error) {
@@ -59,19 +87,19 @@ const OneGame = ({ token, id, logoutFunc }) => {
           <section className="content">
             <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
             <p>Loading...</p>
-            <Footer />
           </section>
         </main>
+        <Footer />
       </>
     );
   } else {
-    console.log(dataScreens);
+    console.log(data.id);
     return (
       <>
         <Header />
         <main>
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-          <section className="content">
+          <section className="content" id="content-game">
             <section className="all-details-one-game">
               <h1>{data.name}</h1>
               <div className="one-game-big-pic">
@@ -93,6 +121,18 @@ const OneGame = ({ token, id, logoutFunc }) => {
                         </Link>
                       );
                     })}
+                  {token && (
+                    <div className={buttonClass}>
+                      <button
+                        onClick={() => {
+                          favoriteFunc(id, idGame);
+                        }}
+                      >
+                        {buttonText}
+                      </button>
+                      <FaPlus />
+                    </div>
+                  )}
                 </section>
                 <CleanText data={data} />
                 <div className="one-game-released">

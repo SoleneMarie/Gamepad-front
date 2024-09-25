@@ -1,0 +1,244 @@
+.form h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sign-form h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.one-form-field {
+  margin: 14px 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.one-form-field input {
+  height: 40px;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 0 6px;
+  width: 100%;
+  font-size: 14px;
+  font-family: "Belinsky Text";
+}
+
+form button {
+  height: 42px;
+  width: 200px;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(44, 138, 79);
+  box-shadow: 0px 0px 5px 5px rgb(44, 138, 79);
+  border: none;
+  margin: 20px 0 0 8px;
+  align-self: center;
+}
+
+.form p {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 36px;
+  text-align: end;
+}
+
+.form p a {
+  text-decoration: none;
+  color: rgb(44, 138, 79);
+  font-size: 18px;
+}
+
+.form p a:hover {
+  color: rgb(97, 209, 168);
+}
+
+.sign-form p {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 36px;
+  text-align: end;
+}
+
+.sign-form p a {
+  text-decoration: none;
+  color: rgb(44, 138, 79);
+  font-size: 18px;
+}
+
+.sign-form p a:hover {
+  color: rgb(97, 209, 168);
+}
+
+.error-messages p {
+  color: rgb(171, 19, 57);
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+label {
+  display: flex;
+  position: relative;
+}
+.sign-up h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.file-button {
+  height: 200px;
+  width: 95%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(140, 147, 155);
+  font-size: 72px;
+  margin: 14px 0;
+  border-radius: 10px;
+}
+
+#picture {
+  display: none;
+}
+
+#picture + p {
+  font-size: 12px;
+  margin-bottom: 0;
+  text-align: start;
+}
+
+#adult-class {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#adult-class h3 {
+  width: 200px;
+}
+#adult {
+  width: 30px;
+}
+
+.passfield {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.pass-icon {
+  position: absolute;
+  top: 20px;
+  right: 12px;
+  z-index: 1000;
+  font-size: 24px;
+}
+
+@media (max-width: 760px) {
+  form {
+    padding: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+    background-color: #151515;
+    border-radius: 10px;
+    color: rgb(140, 147, 155);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  .sign-form {
+    background-color: #202020;
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+
+  .form {
+    background-color: #202020;
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+  .sign-up {
+    background-color: #202020;
+    box-sizing: border-box;
+    padding: 14px 0;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 760px) {
+  form {
+    padding: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+    background-color: #151515;
+    border-radius: 10px;
+    color: rgb(140, 147, 155);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  .form {
+    background-color: #202020;
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 200px;
+    margin-bottom: 40px;
+  }
+  .sign-form {
+    background-color: #202020;
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+  .sign-up {
+    background-color: #202020;
+    box-sizing: border-box;
+    padding: 14px 0;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 200px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 900px) {
+  .one-form-field {
+    width: 70%;
+    align-self: center;
+  }
+}

@@ -4,51 +4,21 @@
 @import "./Platforms.css";
 @import "./Stores.css";
 @import "./OneGame.css";
+@import "./Forms.css";
+@import "./Profile.css";
 
 :root {
   background-color: #151515;
   font-family: "Belinsky Text";
 }
 
-header {
-  max-width: 1280px;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 10px;
-  padding-bottom: 0px;
-  background-color: #151515;
-  display: flex;
-  position: sticky;
-  top: 0px;
-}
-
-.title-header {
-  font-size: 38px;
-  color: white;
-  font-weight: bold;
-  height: 80px;
-  width: 220px;
-  font-family: "Good Timing";
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 main {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  min-height: 100vh;
   background-color: #151515;
   display: flex;
   font-family: "Belinsky Text";
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.content {
-  width: 100%;
   box-sizing: border-box;
 }
 
@@ -56,52 +26,6 @@ footer {
   max-width: 1280px;
   margin: 0 auto;
   background-color: aquamarine;
-}
-
-.menu {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 12px 10px 10px 10px;
-  gap: 8px;
-}
-.menu a {
-  text-decoration: none;
-}
-
-.menu button {
-  font-family: "Belinsky Text";
-  font-size: 18px;
-  font-weight: bold;
-  color: #151515;
-  width: 140px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
-#logs {
-  position: sticky;
-  top: 90px;
-  background-color: #151515;
-}
-.first-line-header {
-  display: flex;
-  flex: 1;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.header-img {
-  width: 90px;
-  height: 64px;
-}
-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 10px;
 }
 
 /* -----------------------   navigation  ----------------------- */
@@ -200,7 +124,7 @@ footer {
   background-color: #151515;
   height: 60px;
   position: relative;
-  box-shadow: 10px 10px 10px 10px rgb(44, 138, 79);
+  box-shadow: 0px 0px 5px 5px rgb(44, 138, 79);
   box-sizing: border-box;
 }
 footer p {
@@ -223,4 +147,387 @@ footer img {
   height: 95%;
   object-fit: cover;
   object-position: top;
+}
+
+.menu-button-green {
+  font-family: "Belinsky Text";
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #37ad63;
+}
+
+.menu-button-logout {
+  font-family: "Belinsky Text";
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(156, 37, 37);
+}
+
+.menu-button:hover {
+  cursor: pointer;
+  filter: brightness(1.25);
+  border: solid 24px white;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(1.25);
+}
+
+@media (max-width: 760px) {
+  header {
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    padding-bottom: 12px;
+    background-color: #151515;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+  }
+  .header-img {
+    width: 90px;
+    height: 64px;
+  }
+  header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+  .first-line-header {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 140px;
+  }
+  .title-header {
+    font-size: 38px;
+    color: white;
+    font-weight: bold;
+    height: 80px;
+    width: 220px;
+    font-family: "Good Timing";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 12px 10px 10px 10px;
+    gap: 8px;
+    background-color: #151515;
+    z-index: 100;
+  }
+
+  .menu a {
+    text-decoration: none;
+  }
+  .all-menu {
+    position: sticky;
+    top: -50px;
+    z-index: 100;
+  }
+  .menu button {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  #logs {
+    position: sticky;
+    top: 90px;
+    background-color: #151515;
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 900px) {
+  header {
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    padding-bottom: 12px;
+    background-color: #151515;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+  }
+  .header-img {
+    width: 120px;
+    height: 80px;
+  }
+  header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+  .first-line-header {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-left: 140px;
+  }
+
+  .title-header {
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    height: 100px;
+    width: 280px;
+    font-family: "Good Timing";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  main {
+    flex-direction: row;
+  }
+  .all-menu {
+    position: fixed;
+    top: 110px;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 12px 10px 10px 10px;
+    gap: 8px;
+    background-color: #151515;
+    z-index: 100;
+  }
+  .menu a:nth-child(1) {
+    margin-bottom: 12px;
+  }
+  .menu a {
+    text-decoration: none;
+  }
+
+  .menu button {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .menu-button-green {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #37ad63;
+  }
+
+  .menu-button-logout {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(156, 37, 37);
+  }
+
+  .menu-button:hover {
+    cursor: pointer;
+    filter: brightness(1.25);
+    border: solid 24px white;
+  }
+
+  button:hover {
+    cursor: pointer;
+    filter: brightness(1.25);
+  }
+  .content {
+    box-sizing: border-box;
+    justify-self: flex-end;
+    padding-left: 140px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 900px) {
+  header {
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    padding-bottom: 12px;
+    background-color: #151515;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+  }
+  .title-header {
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+    height: 140px;
+    width: 340px;
+    font-family: "Good Timing";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-img {
+    width: 140px;
+    height: 100px;
+  }
+  header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+  .first-line-header {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-left: 140px;
+  }
+  main {
+    flex-direction: row;
+  }
+  .all-menu {
+    position: fixed;
+    top: 160px;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 12px 10px 10px 10px;
+    gap: 8px;
+    background-color: #151515;
+    z-index: 100;
+  }
+  .menu a:nth-child(1) {
+    margin-bottom: 12px;
+  }
+  .menu a {
+    text-decoration: none;
+  }
+
+  .menu button {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .menu-button-green {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #37ad63;
+  }
+
+  .menu-button-logout {
+    font-family: "Belinsky Text";
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(156, 37, 37);
+  }
+
+  .menu-button:hover {
+    cursor: pointer;
+    filter: brightness(1.25);
+    border: solid 24px white;
+  }
+
+  button:hover {
+    cursor: pointer;
+    filter: brightness(1.25);
+  }
+  .content {
+    box-sizing: border-box;
+    justify-self: flex-end;
+    padding-left: 140px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
 }

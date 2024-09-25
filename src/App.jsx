@@ -8,9 +8,10 @@ import Genres from "./Routes/Genres";
 import GamesGenre from "./Routes/GamesGenre";
 import Platforms from "./Routes/Platforms";
 import Stores from "./Routes/Stores";
-import SignUp from "./SignUp";
+import SignUp from "./Routes/SignUp";
 import Profile from "./Routes/Profile";
 import Login from "./Routes/Login";
+import WrongWay from "./Routes/WrongWay";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -116,6 +117,7 @@ function App() {
             path="/user/profile/:id"
             element={<Profile token={token} logoutFunc={logoutFunc} />}
           />
+          <Route path="*" element={<WrongWay />} />
         </Routes>
       </Router>
     </>

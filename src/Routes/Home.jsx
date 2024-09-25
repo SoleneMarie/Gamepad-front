@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
-import { FaPlus } from "react-icons/fa";
 import placeHolder from "../pictures/placeholder.png";
 import Header from "../Components/Header";
 import MainBanner from "../Components/MainBanner";
@@ -23,21 +22,7 @@ const Home = ({ token, id, logoutFunc, search, setSearch }) => {
   const [lastPage, setLastPage] = useState(2);
 
   console.log("id props : ", id);
-  /* ---------------- Ma fonction pour gérer les favoris ---------------- */
 
-  const favoriteFunc = async (id, idGame) => {
-    try {
-      const response = await axios.put(
-        `http://localhost:3000/user/favorites/${id}`,
-        { favorites: idGame }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  /* ------------------------------------------------------------------- */
   useEffect(() => {
     setIsLoading(true);
     const dataGamesFunc = async () => {
@@ -115,6 +100,8 @@ const Home = ({ token, id, logoutFunc, search, setSearch }) => {
           <section className="content">
             <MainBanner
               setOrdering={setOrdering}
+              search={search}
+              setSearch={setSearch}
               count={count}
               page={page}
               setPage={setPage}
@@ -180,18 +167,6 @@ const Home = ({ token, id, logoutFunc, search, setSearch }) => {
                           ) : (
                             <h2>Unknown title</h2>
                           )}
-                          {token && (
-                            <div className="like-button">
-                              <button
-                                onClick={() => {
-                                  favoriteFunc(id, idGame);
-                                }}
-                              >
-                                Add
-                              </button>
-                              <FaPlus />
-                            </div>
-                          )}
                         </section>
                       </section>
                     );
@@ -234,18 +209,6 @@ const Home = ({ token, id, logoutFunc, search, setSearch }) => {
                               <h2>{item.name}</h2>
                             ) : (
                               <h2>Unknown title</h2>
-                            )}
-                            {token && (
-                              <div className="like-button">
-                                <button
-                                  onClick={() => {
-                                    favoriteFunc(id, idGame);
-                                  }}
-                                >
-                                  Add
-                                </button>
-                                <FaPlus />
-                              </div>
                             )}
                           </section>
                         </section>
