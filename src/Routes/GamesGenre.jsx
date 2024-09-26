@@ -86,10 +86,10 @@ const GameGenre = ({ token, id, logoutFunc }) => {
         <Header />
         <main>
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-          <section className="content">
+          <section className="content" id="loading-content">
             <MainBanner
-              setSearch={setSearchGenre}
-              search={searchGenre}
+              search={search}
+              setSearch={setSearch}
               setOrdering={setOrdering}
               count={count}
               page={page}
@@ -97,10 +97,15 @@ const GameGenre = ({ token, id, logoutFunc }) => {
               lastPage={lastPage}
               isLoading={isLoading}
             />
-            <section className="all-genres-infos"></section>
+            <section className="all-games">
+              <section className="no-game-found">
+                <img src={loading} />
+                <p>...wait for it...</p>
+              </section>
+            </section>
+            <Footer />
           </section>
         </main>
-        <Footer />
       </>
     );
   } else {
