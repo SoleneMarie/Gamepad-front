@@ -39,7 +39,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
     const infosGenreFunc = async () => {
       try {
         const genreResponse = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run/genres/${genreId}`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run/genres/${genreId}`
         );
         setDataGenre(genreResponse.data);
         setIsLoadingGenre(false);
