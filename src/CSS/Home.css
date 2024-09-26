@@ -283,6 +283,7 @@ main {
     z-index: 100;
     width: 90%;
     align-self: center;
+    margin-left: 20px;
   }
   .sort-page {
     width: 85%;
@@ -378,16 +379,17 @@ main {
     flex-direction: column;
     justify-content: center;
     z-index: 100;
-    width: 98%;
+    width: 95%;
+    margin-left: 20px;
     align-self: center;
   }
   .sort-page {
-    width: 90%;
+    width: 95%;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin-left: 40px;
     position: sticky;
     top: 232px;
     gap: 40px;
