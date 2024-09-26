@@ -10,6 +10,7 @@ import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 import SimilarGames from "../Components/SimilarGames";
 import { FaPlus } from "react-icons/fa";
+import loading from "../pictures/loading.jpg";
 
 const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
@@ -84,12 +85,17 @@ const OneGame = ({ token, id, logoutFunc }) => {
       <>
         <Header />
         <main>
-          <section className="content">
-            <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-            <p>Loading...</p>
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
+          <section className="content" id="loading-content">
+            <section className="all-games">
+              <section className="no-game-found">
+                <img src={loading} />
+                <p>...wait for it...</p>
+              </section>
+            </section>
+            <Footer />
           </section>
         </main>
-        <Footer />
       </>
     );
   } else {
