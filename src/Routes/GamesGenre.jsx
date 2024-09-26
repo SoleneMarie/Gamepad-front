@@ -186,12 +186,6 @@ const GameGenre = ({ token, id, logoutFunc }) => {
                               ) : (
                                 <h2>Unknown title</h2>
                               )}
-                              {token && (
-                                <div className="like-button">
-                                  <button>Add</button>
-                                  <FaPlus />
-                                </div>
-                              )}
                             </section>
                           </section>
                         );
