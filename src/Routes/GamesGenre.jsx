@@ -10,6 +10,7 @@ import LeftMenu from "../Components/LeftMenu";
 import placeHolder from "../pictures/placeholder.png";
 import PageNav from "../Components/PageNav";
 import notFound from "../pictures/not-found.jpg";
+import loading from "../pictures/loading.jpg";
 
 const GameGenre = ({ token, id, logoutFunc }) => {
   const [isLoadingGenre, setIsLoadingGenre] = useState(false);

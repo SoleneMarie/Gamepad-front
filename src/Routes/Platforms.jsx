@@ -6,6 +6,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import PageNav from "../Components/PageNav";
 import GetPicsById from "../Components/GetPicsById";
+import loading from "../pictures/loading.jpg";
 
 const Platforms = ({ token, id, logoutFunc }) => {
   const [data, setData] = useState([]);
