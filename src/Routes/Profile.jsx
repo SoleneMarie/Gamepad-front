@@ -6,6 +6,7 @@ import LeftMenu from "../Components/LeftMenu";
 import Header from "../Components/Header";
 import LoadFavourites from "../Components/LoadFavourites";
 import notAutho from "../pictures/not-autho.webp";
+import loading from "../pictures/loading.jpg";
 
 const Profile = ({ token, logoutFunc }) => {
   const [data, setData] = useState({});
@@ -96,12 +97,17 @@ const Profile = ({ token, logoutFunc }) => {
       <>
         <Header />
         <main>
-          <section className="content">
-            <LeftMenu token={token} logoutFunc={logoutFunc} />
-            <p>Loading...</p>
+          <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
+          <section className="content" id="loading-content">
+            <section className="all-games">
+              <section className="no-game-found">
+                <img src={loading} />
+                <p>...wait for it...</p>
+              </section>
+            </section>
+            <Footer />
           </section>
         </main>
-        <Footer />
       </>
     );
   }
