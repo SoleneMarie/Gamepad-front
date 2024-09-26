@@ -28,7 +28,7 @@ const Home = ({ token, id, logoutFunc, search, setSearch }) => {
     const dataGamesFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000?search=${search}&ordering=${ordering}&page=${page}&pagesize=${pageSize}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run?search=${search}&ordering=${ordering}&page=${page}&pagesize=${pageSize}`
         );
         setData(response.data.results);
         setCount(response.data.count);

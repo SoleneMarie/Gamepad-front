@@ -39,7 +39,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
     const infosGenreFunc = async () => {
       try {
         const genreResponse = await axios.get(
-          `http://localhost:3000/genres/${genreId}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/genres/${genreId}`
         );
         setDataGenre(genreResponse.data);
         setIsLoadingGenre(false);
@@ -55,7 +55,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
     const gamesGenreFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/games/${genreId}?pagesize=${pageSize}&search=${searchGenre}&ordering=${ordering}&page=${page}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/games/${genreId}?pagesize=${pageSize}&search=${searchGenre}&ordering=${ordering}&page=${page}`
         );
         setData(response.data.results);
         setCount(response.data.count);

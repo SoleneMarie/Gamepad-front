@@ -15,7 +15,9 @@ const Stores = ({ token, id }) => {
     setIsLoading(true);
     const getStoresFunc = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/stores");
+        const response = await axios.get(
+          "http://site--gamepad--dk2vmt6fnyjp.code.run/stores"
+        );
         setData(response.data.results);
         setIsLoading(false);
       } catch (error) {

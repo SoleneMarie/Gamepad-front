@@ -34,7 +34,7 @@ const Login = ({ cookieFunc }) => {
       setIsLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:3000/user/login",
+          "http://site--gamepad--dk2vmt6fnyjp.code.run/user/login",
           idData
         );
 

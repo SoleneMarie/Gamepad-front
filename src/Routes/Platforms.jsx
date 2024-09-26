@@ -20,7 +20,7 @@ const Platforms = ({ token, id, logoutFunc }) => {
     const fetchPlatformsFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/platforms?page_size=${pageSize}&page=${page}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/platforms?page_size=${pageSize}&page=${page}`
         );
         setData(response.data.results);
         setCount(response.data.count);

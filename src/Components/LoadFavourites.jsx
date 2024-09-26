@@ -11,7 +11,9 @@ const LoadFavourites = ({ id }) => {
     setIsLoading(true);
     const getFavouritesFunc = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/game/${id}`);
+        const response = await axios.get(
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${id}`
+        );
         console.log(response.data);
         setData(response.data);
         setIsLoading(false);

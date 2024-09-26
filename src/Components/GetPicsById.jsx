@@ -10,7 +10,9 @@ const GetPicsById = ({ name, id }) => {
     setIsLoadingMin(true);
     const getPicFunc = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/game/${id}`);
+        const response = await axios.get(
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${id}`
+        );
         setDataMin(response.data);
         setIsLoadingMin(false);
       } catch (error) {

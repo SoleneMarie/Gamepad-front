@@ -50,7 +50,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
       setisLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:3000/game/${idgame}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}`
         );
         setData(response.data);
         setIdGame(response.data.id);
@@ -68,7 +68,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
     const fetchScreensFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/game/${idgame}/screenshots`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}/screenshots`
         );
         setDataScreens(response.data.results);
         setIsLoadingScreens(false);

@@ -20,7 +20,7 @@ const Profile = ({ token, logoutFunc }) => {
     const profileDataFunc = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/profile/${id}`
+          `http://site--gamepad--dk2vmt6fnyjp.code.run/user/profile/${id}`
         );
         setData(response.data);
         console.log(data);
