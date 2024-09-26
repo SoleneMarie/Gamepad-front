@@ -32,7 +32,7 @@ const SimilarGames = ({ id }) => {
             data.results.map((item) => {
               return (
                 <section className="oneGame" key={item.id}>
-                  <Link to={`/game/${item.id}`} target="blank">
+                  <Link to={`/game/${item.id}`}>
                     <div>
                       {item.background_image ? (
                         <img src={item.background_image} />
