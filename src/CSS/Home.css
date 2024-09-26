@@ -36,6 +36,13 @@ main {
   text-align: center;
 }
 
+.search-page p {
+  margin-left: 12px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: red;
+}
+
 #search-game {
   position: sticky;
   top: 200px;

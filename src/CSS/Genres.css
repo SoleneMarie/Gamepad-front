@@ -59,7 +59,7 @@
   }
   .genre-description {
     position: sticky;
-    top: 250px;
+    top: 220px;
     background-color: #151515;
     margin-top: 10px;
   }
@@ -128,5 +128,16 @@
     border-radius: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
+  }
+  .genre-description {
+    position: sticky;
+    top: 250px;
+    background-color: #151515;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  .genre-desc-title-main {
+    font-family: "Good Timing";
+    font-size: 30px;
   }
 }
