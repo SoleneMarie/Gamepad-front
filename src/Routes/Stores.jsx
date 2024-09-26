@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import GetPicsById from "../Components/GetPicsById";
 
-const Stores = ({ token, id }) => {
+const Stores = ({ token, id, logoutFunc }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +50,7 @@ const Stores = ({ token, id }) => {
     <>
       <Header />
       <main>
-        <LeftMenu token={token} id={id} />
+        <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
         <section className="content">
           <section className="all-stores">
             {data &&
