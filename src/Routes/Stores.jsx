@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import loading from "../pictures/loading.jpg";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
@@ -31,12 +31,17 @@ const Stores = ({ token, id }) => {
     <>
       <Header />
       <main>
-        <section className="content">
-          <LeftMenu token={token} id={id} />
-          <p>Loading...</p>
+        <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
+        <section className="content" id="loading-content">
+          <section className="all-games">
+            <section className="no-game-found">
+              <img src={loading} />
+              <p>...wait for it...</p>
+            </section>
+          </section>
+          <Footer />
         </section>
       </main>
-      <Footer />
     </>;
   } else {
   }
