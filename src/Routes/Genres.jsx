@@ -5,6 +5,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import GetPicsById from "../Components/GetPicsById";
+import loading from "../pictures/loading.jpg";
 const Genres = ({ token, id, logoutFunc }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -31,12 +32,16 @@ const Genres = ({ token, id, logoutFunc }) => {
         <Header />
         <main>
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
-          <section className="content">
-            <section className="all-genres-infos"></section>
-            <p>Loading content</p>
+          <section className="content" id="loading-content">
+            <section className="all-games">
+              <section className="no-game-found">
+                <img src={loading} />
+                <p>...wait for it...</p>
+              </section>
+            </section>
+            <Footer />
           </section>
         </main>
-        <Footer />
       </>
     );
   } else {
