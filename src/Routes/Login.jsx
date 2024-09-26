@@ -34,7 +34,7 @@ const Login = ({ cookieFunc }) => {
       setIsLoading(true);
       try {
         const response = await axios.post(
-          "http://site--gamepad--dk2vmt6fnyjp.code.run/user/login",
+          "https://site--gamepad--dk2vmt6fnyjp.code.run/user/login",
           idData
         );
 

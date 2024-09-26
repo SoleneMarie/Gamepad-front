@@ -27,7 +27,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
   const favoriteFunc = async (id, idGame) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/favorites/${id}`,
+        `https://site--gamepad--dk2vmt6fnyjp.code.run/user/favorites/${id}`,
         { favorites: idGame }
       );
       console.log(response.data);
@@ -50,7 +50,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
       setisLoading(true);
       try {
         const response = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}`
         );
         setData(response.data);
         setIdGame(response.data.id);
@@ -68,7 +68,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
     const fetchScreensFunc = async () => {
       try {
         const response = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}/screenshots`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run/game/${idgame}/screenshots`
         );
         setDataScreens(response.data.results);
         setIsLoadingScreens(false);

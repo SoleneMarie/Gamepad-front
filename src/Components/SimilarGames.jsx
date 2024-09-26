@@ -12,7 +12,7 @@ const SimilarGames = ({ id }) => {
     const getSimilarFunc = async () => {
       try {
         const response = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run?tags=${id}&page_size=6&ordering=rating`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run?tags=${id}&page_size=6&ordering=rating`
         );
         setData(response.data);
         setIsLoading(false);

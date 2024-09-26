@@ -12,7 +12,7 @@ const LoadFavourites = ({ id }) => {
     const getFavouritesFunc = async () => {
       try {
         const response = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run/game/${id}`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run/game/${id}`
         );
         console.log(response.data);
         setData(response.data);

@@ -14,7 +14,7 @@ const Genres = ({ token, id, logoutFunc }) => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          "http://site--gamepad--dk2vmt6fnyjp.code.run/genres"
+          "https://site--gamepad--dk2vmt6fnyjp.code.run/genres"
         );
         setData(response.data.results);
         setIsLoading(false);

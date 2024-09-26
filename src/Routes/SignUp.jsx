@@ -71,7 +71,7 @@ const SignUp = ({ cookieFunc }) => {
         formData.append("isEighteen", isEighteen);
         setIsLoading(true);
         const response = await axios.post(
-          "http://site--gamepad--dk2vmt6fnyjp.code.run/user/signup",
+          "https://site--gamepad--dk2vmt6fnyjp.code.run/user/signup",
           formData
         );
         console.log(response.data);

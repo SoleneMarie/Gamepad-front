@@ -55,7 +55,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
     const gamesGenreFunc = async () => {
       try {
         const response = await axios.get(
-          `http://site--gamepad--dk2vmt6fnyjp.code.run/games/${genreId}?pagesize=${pageSize}&search=${searchGenre}&ordering=${ordering}&page=${page}`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run/games/${genreId}?pagesize=${pageSize}&search=${searchGenre}&ordering=${ordering}&page=${page}`
         );
         setData(response.data.results);
         setCount(response.data.count);
