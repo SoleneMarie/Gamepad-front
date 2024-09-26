@@ -6,6 +6,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LeftMenu from "../Components/LeftMenu";
 import GetPicsById from "../Components/GetPicsById";
+import loading from "../pictures/loading.jpg";
 
 const Stores = ({ token, id, logoutFunc }) => {
   const [data, setData] = useState([]);
