@@ -198,6 +198,9 @@ main {
     justify-content: center;
     z-index: 100;
   }
+  #wrong-way-img {
+    border-radius: 10px;
+  }
   .sort-page {
     width: 90%;
     padding: 10px;
@@ -238,6 +241,9 @@ main {
   }
   .not-found {
     width: 92%;
+  }
+  .no-game-found img {
+    border-radius: 10px;
   }
 }
 
@@ -331,9 +337,11 @@ main {
   .no-game-found img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
   }
   .wrong-way-img {
     width: 70%;
+    border-radius: 10px;
   }
 }
 @media (min-width: 900px) {
@@ -418,6 +426,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
   }
   .no-game-found {
     max-width: 1280px;
@@ -433,5 +442,6 @@ main {
   }
   #wrong-way-img {
     width: 95%;
+    border-radius: 10px;
   }
 }
