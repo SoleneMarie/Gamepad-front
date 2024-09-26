@@ -3,6 +3,7 @@ import placeHolder from "../pictures/placeholder.png";
 import CleanText from "../Components/CleanText";
 import { GoStarFill } from "react-icons/go";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const LoadFavourites = ({ id }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,13 +29,15 @@ const LoadFavourites = ({ id }) => {
     return (
       <>
         <section className="one-favourite-game">
-          <div className="fav-img">
-            {data.background_image ? (
-              <img src={data.background_image} />
-            ) : (
-              <img src={placeHolder} />
-            )}
-          </div>
+          <Link to={`/game/${id}`}>
+            <div className="fav-img">
+              {data.background_image ? (
+                <img src={data.background_image} />
+              ) : (
+                <img src={placeHolder} />
+              )}
+            </div>
+          </Link>
           <h3>{data.name}</h3>
           <div className="overflow">
             <CleanText data={data} />
