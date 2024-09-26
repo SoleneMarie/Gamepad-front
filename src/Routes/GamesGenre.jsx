@@ -88,7 +88,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
           <LeftMenu token={token} id={id} logoutFunc={logoutFunc} />
           <section className="content" id="loading-content">
             <MainBanner
-              search={search}
+              search={searchGenre}
               setSearch={setSearch}
               setOrdering={setOrdering}
               count={count}
