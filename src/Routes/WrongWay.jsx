@@ -9,7 +9,7 @@ const WrongWay = () => {
       <Header />
       <main>
         <section className="all-menu">
-          <LeftMenu />{" "}
+          <LeftMenu />
         </section>
         <section className="content">
           <section className="not-found">
