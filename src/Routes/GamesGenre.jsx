@@ -90,7 +90,7 @@ const GameGenre = ({ token, id, logoutFunc }) => {
           <section className="content" id="loading-content">
             <MainBanner
               search={searchGenre}
-              setSearch={setSearch}
+              setSearch={setSearchGenre}
               setOrdering={setOrdering}
               count={count}
               page={page}
