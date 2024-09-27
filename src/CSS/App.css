@@ -218,7 +218,6 @@ button:hover {
     flex: 1;
     justify-content: space-evenly;
     align-items: center;
-    margin-left: 140px;
   }
   .title-header {
     font-size: 38px;
