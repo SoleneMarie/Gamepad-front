@@ -14,6 +14,8 @@ import loading from "../pictures/loading.jpg";
 
 const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
+
+  console.log(param, "MES PARAMS");
   const idgame = param.id;
   const [data, setData] = useState({});
   const [dataScreens, setDataScreens] = useState([]);
@@ -31,7 +33,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
         `https://site--gamepad--dk2vmt6fnyjp.code.run/user/favorites/${id}`,
         { favorites: idGame }
       );
-      console.log(response.data);
+      console.log("data récupéré au clic", response.data);
       if (response.data.message === "added to your favorites") {
         setButtonClass("red");
         setButtonText("Remove");
@@ -55,14 +57,14 @@ const OneGame = ({ token, id, logoutFunc }) => {
         );
         setData(response.data);
         setIdGame(response.data.id);
-
+        console.log("data récupéré au clic", response.data);
         setisLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
     getGame();
-  }, []);
+  }, [param.id]);
 
   useEffect(() => {
     setIsLoadingScreens(true);
@@ -170,7 +172,7 @@ const OneGame = ({ token, id, logoutFunc }) => {
             </section>
             <section className="similar-games">
               {data.tags && data.tags.length > 0 ? (
-                <SimilarGames id={data.tags[0].id} />
+                <SimilarGames idtag={data.tags[0].id} />
               ) : (
                 <></>
               )}

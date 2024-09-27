@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import placeHolder from "../pictures/placeholder.png";
 import { Link } from "react-router-dom";
 
-const SimilarGames = ({ id }) => {
+const SimilarGames = ({ idtag }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,7 +12,7 @@ const SimilarGames = ({ id }) => {
     const getSimilarFunc = async () => {
       try {
         const response = await axios.get(
-          `https://site--gamepad--dk2vmt6fnyjp.code.run?tags=${id}&page_size=6&ordering=rating`
+          `https://site--gamepad--dk2vmt6fnyjp.code.run?tags=${idtag}&page_size=6&ordering=rating`
         );
         setData(response.data);
         setIsLoading(false);

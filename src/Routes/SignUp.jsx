@@ -25,6 +25,7 @@ const SignUp = ({ cookieFunc }) => {
   const [conflictUser, setConflictUser] = useState(false);
   const [conflictMail, setConflictMail] = useState(false);
   const [passType, setPassType] = useState("password");
+  const [idUser, setIdUSer] = useState("");
   const navigate = useNavigate();
 
   /* ------------ Ma fonction quand je soumet le formulaire ------------ */
@@ -74,13 +75,13 @@ const SignUp = ({ cookieFunc }) => {
           "https://site--gamepad--dk2vmt6fnyjp.code.run/user/signup",
           formData
         );
-        console.log(response.data);
-        const id = response.data.id;
-
+        console.clear();
+        console.log("data user:", response.data.account._id);
+        const id = response.data.account._id;
         const token = response.data.account.token;
+        setIdUSer(id);
         cookieFunc(token, id);
         setIsLoading(false);
-
         navigate(`/user/profile/${id}`);
       } catch (error) {
         console.log(error);
@@ -128,7 +129,7 @@ const SignUp = ({ cookieFunc }) => {
                   id="email"
                   name="email"
                   placeholder="ex : tom@game.com"
-                  onClick={(event) => {
+                  onChange={(event) => {
                     setEmail(event.target.value);
                   }}
                 />
