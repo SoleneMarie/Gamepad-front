@@ -25,7 +25,6 @@ const SignUp = ({ cookieFunc }) => {
   const [conflictUser, setConflictUser] = useState(false);
   const [conflictMail, setConflictMail] = useState(false);
   const [passType, setPassType] = useState("password");
-  const [idUser, setIdUSer] = useState("");
   const navigate = useNavigate();
 
   /* ------------ Ma fonction quand je soumet le formulaire ------------ */

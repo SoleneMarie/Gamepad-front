@@ -11,6 +11,7 @@ import Header from "../Components/Header";
 import SimilarGames from "../Components/SimilarGames";
 import { FaPlus } from "react-icons/fa";
 import loading from "../pictures/loading.jpg";
+import GetUserCookie from "./GetUserCookieId";
 
 const OneGame = ({ token, id, logoutFunc }) => {
   const param = useParams();
@@ -21,8 +22,6 @@ const OneGame = ({ token, id, logoutFunc }) => {
   const [dataScreens, setDataScreens] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   const [isLoadingScreens, setIsLoadingScreens] = useState(false);
-  const [buttonClass, setButtonClass] = useState("green");
-  const [buttonText, setButtonText] = useState("Add");
   const [idGame, setIdGame] = useState("");
 
   /* ---------------- Ma fonction pour gérer les favoris ---------------- */
@@ -34,13 +33,6 @@ const OneGame = ({ token, id, logoutFunc }) => {
         { favorites: idGame }
       );
       console.log("data récupéré au clic", response.data);
-      if (response.data.message === "added to your favorites") {
-        setButtonClass("red");
-        setButtonText("Remove");
-      } else {
-        setButtonClass("green");
-        setButtonText("Add");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -129,18 +121,9 @@ const OneGame = ({ token, id, logoutFunc }) => {
                         </Link>
                       );
                     })}
-                  {token && (
-                    <div className={buttonClass}>
-                      <button
-                        onClick={() => {
-                          favoriteFunc(id, idGame);
-                        }}
-                      >
-                        {buttonText}
-                      </button>
-                      <FaPlus />
-                    </div>
-                  )}
+
+                  {/*Rajouter / retirer des favoris */}
+                  {token && <GetUserCookie id={id} idGame={idGame} />}
                 </section>
                 <CleanText data={data} />
                 <div className="one-game-released">
